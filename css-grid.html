@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Grid-CSS</title>
+
+  <style>
+    .container {
+      width: 50%;
+      margin: auto;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto;
+      padding: 55px;
+      margin-bottom: 5px;
+      background-color: #eee;
+    }
+
+    .grid-middle {
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+
+    .grid-footer {
+      grid-column: 1 / span 7;
+      grid-row: 2;
+    }
+
+    .grid-footer>div {
+      /*background-color: rgba(255, 255, 255, 0.8);*/
+      text-align: center;
+      padding: 5px 0;
+      font-size: 120%;
+    }
+
+    .vald {
+      background-color: #5f5f5f;
+      /*padding: 20px 0;*/
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid #000;
+    }
+
+    .ejvald {
+      background-color: #ccc;
+      padding: 20px 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid #5D5D5D;
+    }
+
+    .leftmiddle {
+      border-right: solid 1px #000;
+      background-position: right;
+    }
+
+    .rightmiddle {
+      border-left: solid 1px #000;
+      background-position: left;
+    }
+  </style>
+
+  <script language="javascript">
+
+    function toggleSelection(element) {
+      const valLista = [
+        document.getElementById("val3L"),
+        document.getElementById("val2L"),
+        document.getElementById("val1L"),
+        document.getElementById("val0L"),
+        document.getElementById("val0R"),
+        document.getElementById("val1R"),
+        document.getElementById("val2R"),
+        document.getElementById("val3R")
+      ];
+
+      // Kollar att vi har klickat på någon av knapparna i mitten
+      if (element.id === 'val0L' || element.id === 'val0R') {
+
+        // Går igenom listan med möjliga val och sätter class ejvald på det som inte är klickat på
+        valLista.forEach((val) => {
+
+          // Kollar om där vi är i listan matchar det som vi klickat på (id) och sätter class vald
+          // annars (else) sätts class ejvald
+          if (val.id === 'val0L' || val.id === 'val0R') {
+
+            if (val.id.match('.*L$') !== null) {
+              val.className = 'vald leftmiddle';
+            } else {
+              val.className = 'vald rightmiddle';
+            }
+
+          } else {
+            val.className = 'ejvald';
+          }
+
+        });
+
+      } else if (element.id.match('.*L$') !== null) {
+        valLista.forEach((val) => {
+          if (val.id.match('.*R$') !== null) {
+            if (val.id.match('.*0R$') !== null) {
+              val.className = 'ejvald rightmiddle';
+            } else {
+              val.className = 'ejvald';
+            }
+          }
+        });
+        if (element.id.match('.*1L$') !== null) {
+          valLista[0].className = 'ejvald';
+          valLista[1].className = 'ejvald';
+          valLista[2].className = 'vald';
+          valLista[3].className = 'vald leftmiddle';
+        } else if (element.id.match('.*2L$') !== null) {
+          valLista[0].className = 'ejvald';
+          valLista[1].className = 'vald';
+          valLista[2].className = 'vald';
+          valLista[3].className = 'vald leftmiddle';
+        } else if (element.id.match('.*3L$') !== null) {
+          valLista[0].className = 'vald';
+          valLista[1].className = 'vald';
+          valLista[2].className = 'vald';
+          valLista[3].className = 'vald leftmiddle';
+        }
+      } else if (element.id.match('.*R$') !== null) {
+        valLista.forEach((val) => {
+          if (val.id.match('.*L$') !== null) {
+            if (val.id.match('.*0L$') !== null) {
+              val.className = 'ejvald leftmiddle';
+            } else {
+              val.className = 'ejvald';
+            }
+          }
+        });
+        if (element.id.match('.*1R$') !== null) {
+          valLista[7].className = 'ejvald';
+          valLista[6].className = 'ejvald';
+          valLista[5].className = 'vald';
+          valLista[4].className = 'vald rightmiddle';
+        } else if (element.id.match('.*2R$') !== null) {
+          valLista[7].className = 'ejvald';
+          valLista[6].className = 'vald';
+          valLista[5].className = 'vald';
+          valLista[4].className = 'vald rightmiddle';
+        } else if (element.id.match('.*3R$') !== null) {
+          valLista[7].className = 'vald';
+          valLista[6].className = 'vald';
+          valLista[5].className = 'vald';
+          valLista[4].className = 'vald rightmiddle';
+        }
+      }
+    }
+  </script>
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="grid-container">
+
+      <div class="ejvald" id="val3L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val2L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val1L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="grid-middle">
+        <div class="ejvald leftmiddle" id="val0L" style="background-image: url(button-middle-left.png)"
+          onClick="javascript:toggleSelection(this)"></div>
+        <div class="ejvald rightmiddle" id="val0R" style="background-image: url(button-middle-right.png)"
+          onClick="javascript:toggleSelection(this)"></div>
+      </div>
+      <div class="ejvald" id="val1R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val2R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val3R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+
+      <div class="grid-footer">Här ska det vara en bild</div>
+    </div>
+  </div>
+</body>
+
+</html>

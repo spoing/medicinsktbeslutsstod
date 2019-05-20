@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>Medicinsk beslutstöd</title>
+	<style>
+		.container {
+			width: 50%;
+			margin: auto;
+			/*text-align: center;*/
+		}
+
+		.grid-container {
+			display: grid;
+			/*grid-template-columns: auto auto auto auto auto auto;*/
+			grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+			grid-gap: 0px;
+			padding: 55px 55px 0px 55px;
+			margin-bottom: 0px;
+			background-color: #343434;
+			/*border: solid 1px #000;*/
+		}
+
+		.grid-container>div {
+			background-color: #eee;
+			padding: 20px 0;
+			background-repeat: no-repeat;
+			background-position: center;
+			border: 1px solid #5f5f5f;
+			text-align: center;
+		}
+
+		.pagecontainer {
+			width: 50%;
+			margin: auto;
+		}
+
+		p {
+			font-weight: bold;
+		}
+
+		/*pages css*/
+		.maincontainer {
+			width: auto;
+			margin: auto;
+			border: solid 1px #343434;
+
+		}
+
+		.headerquiz {
+			width: auto;
+			background-color: #343434;
+			color: #fff;
+			padding: 10px;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
+
+		}
+
+		.headerquizpage {
+			width: auto;
+			background-color: #343434;
+			color: #fff;
+			padding: 10px 10px 10px 20px;
+			margin-bottom: 10px;
+
+		}
+
+		.containerquiz {
+			width: auto;
+			padding: 25px;
+			background-color: #eee;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
+
+		}
+	</style>
+	<script language="javascript">
+
+		function setAktivSida(klickatElement, elementId) {
+			const menyElementLista = [
+				document.getElementById("1-info"),
+				document.getElementById("2-jamfor"),
+				document.getElementById("3-kansla"),
+				document.getElementById("4-dittval"),
+				document.getElementById("5-quiz"),
+				document.getElementById("6-summary")
+			];
+
+			const sidElementLista = [
+				document.getElementById("p1"),
+				document.getElementById("p2"),
+				document.getElementById("p3"),
+				document.getElementById("p4"),
+				document.getElementById("p5"),
+				document.getElementById("p6")
+			];
+
+			// Visa vilket meny val som är aktivt
+			menyElementLista.forEach((menyval) => {
+				if (menyval.id === klickatElement.id) {
+					klickatElement.style.backgroundColor = "#343434";
+					klickatElement.style.color = "#ffffff";
+				} else {
+					menyval.style.backgroundColor = "#eee";
+					menyval.style.color = "#000000";
+				}
+			});
+
+			// Visa sida med innehåll
+			sidElementLista.forEach((page) => {
+				if (page.id === elementId) {
+					page.style.display = "block";
+				} else {
+					page.style.display = "none";
+				}
+			});
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="grid-container">
+			<div id="1-info" onclick="setAktivSida(this, &#39;p1&#39;)"
+				style="background-color: rgb(52, 52, 52); color: rgb(255, 255, 255);">
+				<h1>1</h1>
+				<p>Skaffa fakta</p>
+			</div>
+			<div id="2-jamfor" onclick="setAktivSida(this, &#39;p2&#39;)"
+				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+				<h1>2</h1>
+				<p>Jämför alternativ</p>
+			</div>
+			<div id="3-kansla" onclick="setAktivSida(this, &#39;p3&#39;)"
+				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+				<h1>3</h1>
+				<p>Din känslor</p>
+			</div>
+			<div id="4-dittval" onclick="setAktivSida(this, &#39;p4&#39;)"
+				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+				<h1>4</h1>
+				<p>Ditt beslut</p>
+			</div>
+			<div id="5-quiz" onclick="setAktivSida(this, &#39;p5&#39;)"
+				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+				<h1>5</h1>
+				<p>Fråga dig själv</p>
+			</div>
+			<div id="6-summary" onclick="setAktivSida(this, &#39;p6&#39;)"
+				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+				<h1>6</h1>
+				<p>Sammanställning</p>
+			</div>
+		</div>
+	</div>
+	<div class="pagecontainer">
+		<div id="p1" style="display: block;">Sidan 1</div>
+		<div id="p2" style="display: none;">Sidan 2</div>
+		<div id="p3" style="display: none;">Sidan 3</div>
+		<div id="p4" style="display: none;">Sidan 4</div>
+
+		<div id="p5" style="display: none;">
+			<div class="headerquizpage">
+				<h2>Vad behöver du ytterligare för att fatta ditt beslut?</h2>
+			</div>
+			<div class="maincontainer">
+				<div class="headerquiz">
+					<h2>Kontrollera fakta</h2>
+				</div>
+				<div class="containerquiz">
+					<h2><strong>1. Vad är den bästa anledningen att sluta ta depression medicin?</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Eftersom du känner dig lite bättre<br>
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Eftersom du har använt den i 3 månader, och det är
+					tillräckligt länge för att bli bättre<br>
+					<input id="quiz1c" type="radio" name="quiz1" value="c"> Eftersom du mår bättre, och du och din läkare tror att
+					du kommer att fortsätta att må bra utan läkemedel<br>
+					<input id="quiz1d" type="radio" name="quiz1" value="d"> Jag är inte säker
+				</div>
+				<div class="containerquiz">
+					<h2><strong>2. Hur lång tid behöver du ta antidepressiva för att minska risken att din depression kan komma
+							tillbaka?</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ett par veckor<br>
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Några månader<br>
+					<input id="quiz1c" type="radio" name="quiz1" value="c"> Minst 6 månader<br>
+					<input id="quiz1d" type="radio" name="quiz1" value="d"> Jag är inte säker
+				</div>
+				<div class="containerquiz">
+					<h2><strong>3. Vad är den bästa anledningen att sluta ta depression medicin?</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Tala med din läkare först<br>
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Plötsligt<br>
+					<input id="quiz1c" type="radio" name="quiz1" value="c"> Det spelar ingen roll<br>
+					<input id="quiz1d" type="radio" name="quiz1" value="d"> Jag är inte säker
+				</div>
+			</div>
+			<br>
+			<div class="maincontainer">
+				<div class="headerquiz">
+					<h1>Bestäm vad som kommer härnäst</h1>
+				</div>
+				<div class="containerquiz">
+					<h2><strong>1. Förstår du vilka alternativ som är tillgängliga för dig?</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ja
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Nej
+				</div>
+				<div class="containerquiz">
+					<h2><strong>2. Är du klar över vilka fördelar och biverkningar som betyder mest för dig?</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ja
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Nej
+				</div>
+				<div class="containerquiz">
+					<h2><strong>3. Har du tillräckligt med stöd och råd från andra att göra ett val?</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ja
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Nej
+				</div>
+			</div>
+			<br>
+			<div class="maincontainer">
+				<div class="headerquiz">
+					<h1>Hur säker är du?</h1>
+				</div>
+				<div class="containerquiz">
+					<p><strong>1. Här ska en specialslider finnas</strong></p>
+				</div>
+
+				<div class="containerquiz">
+					<h2><strong>2. Kolla vad du behöver göra innan du fattar detta beslut.</strong></h2>
+					<input id="quiz1a" type="radio" name="quiz1" value="a"> Jag är redo att vidta åtgärder.<br>
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Jag vill diskutera alternativen med andra.<br>
+					<input id="quiz1c" type="radio" name="quiz1" value="c"> Jag vill lära mig mer om mina alternativ.<br>
+
+				</div>
+				<div class="containerquiz">
+					<h2><strong>3. Använd följande utrymme för att lista frågor, problem och nästa steg.</strong></h2>
+					<textarea id="plaintext" rows="6" cols="80"></textarea>
+
+				</div>
+			</div>
+
+		</div>
+		<div id="p6" style="display: none;">sidan 6</div>
+	</div>
+
+
+</body>
+
+</html>
