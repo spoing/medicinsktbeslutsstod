@@ -1,26 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-	<title>Medicinsk beslutstöd</title>
+	<meta charset="UTF-8">
+	<title>Medicinsktbeslutstöd</title>
 	<style>
+		.introtext {
+			width: 50%;
+			margin: auto;
+		}
+
 		.container {
 			width: 50%;
 			margin: auto;
-			/*text-align: center;*/
 		}
 
 		.grid-container {
 			display: grid;
-			/*grid-template-columns: auto auto auto auto auto auto;*/
 			grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
 			grid-gap: 0px;
 			padding: 55px 55px 0px 55px;
 			margin-bottom: 0px;
 			background-color: #343434;
-			/*border: solid 1px #000;*/
 		}
 
 		.grid-container>div {
@@ -30,6 +31,7 @@
 			background-position: center;
 			border: 1px solid #5f5f5f;
 			text-align: center;
+			cursor: pointer;
 		}
 
 		.pagecontainer {
@@ -37,11 +39,11 @@
 			margin: auto;
 		}
 
-		p {
-			font-weight: bold;
-		}
+		/* p {} */
 
-		/*pages css*/
+		/*
+			Pages css
+		*/
 		.maincontainer {
 			width: auto;
 			margin: auto;
@@ -49,7 +51,15 @@
 
 		}
 
-		.headerquiz {
+		.headerp {
+			background-color: #343434;
+			color: #fff;
+			padding: 10px 10px 10px 20px;
+			margin-bottom: 10px;
+
+		}
+
+		.headerpages {
 			width: auto;
 			background-color: #343434;
 			color: #fff;
@@ -58,19 +68,10 @@
 			margin-top: 10px;
 			margin-left: 10px;
 			margin-right: 10px;
-
+			text-align: center;
 		}
 
-		.headerquizpage {
-			width: auto;
-			background-color: #343434;
-			color: #fff;
-			padding: 10px 10px 10px 20px;
-			margin-bottom: 10px;
-
-		}
-
-		.containerquiz {
+		.containerpages {
 			width: auto;
 			padding: 25px;
 			background-color: #eee;
@@ -80,6 +81,89 @@
 			margin-right: 10px;
 
 		}
+
+		/*
+			Page 1 accordion css
+		*/
+		.accordioncontainer {
+			width: auto;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.accordion {
+			background-color: #eee;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			text-align: left;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		/* 
+			Add a background color to the button if it is clicked on (add the .active class with JS), 
+			and when you move the mouse over it (hover)
+		*/
+		.active,
+		.accordion:hover {
+			background-color: #ccc;
+		}
+
+		/* 
+			Style the accordion panel. 
+			Note: hidden by default 
+		*/
+		.panel {
+			padding: 0 0 0 18px;
+			background-color: white;
+			display: none;
+			overflow: hidden;
+		}
+
+		button.accordion::after {
+			content: '\002B';
+			color: #777;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+		button.accordion.active::after {
+
+			content: "\2212";
+
+		}
+
+		/*
+			Page 1 accordion css end
+		*/
+
+		/* 
+			Page 2 css
+		*/
+		.grid-containerpage2 {
+			display: grid;
+			grid-template-columns: auto auto auto;
+			grid-gap: 0px;
+			padding: 10px;
+		}
+
+		.grid-containerpage2>div {
+			border: 1px solid #b3b3b3;
+			text-align: left;
+			padding: 10px;
+		}
+
+		/*
+			Pages css end
+		*/
 	</style>
 	<script language="javascript">
 
@@ -102,7 +186,7 @@
 				document.getElementById("p6")
 			];
 
-			// Visa vilket meny val som är aktivt
+			// Visa vilket menyval som är aktivt
 			menyElementLista.forEach((menyval) => {
 				if (menyval.id === klickatElement.id) {
 					klickatElement.style.backgroundColor = "#343434";
@@ -127,72 +211,264 @@
 </head>
 
 <body>
+	<div class="introtext">
+		<h1>Depression: Ska jag sluta ta mitt antidepressiva medel?</h1>
+		<p>Du kanske vill ha något att säga till om i detta beslut, eller så kan du helt enkelt vilja följa din läkares
+			rekommendation. Hur som helst, den här informationen hjälper dig att förstå vilka dina val är så att du kan
+			prata om dem med din läkare.</p>
+	</div>
 	<div class="container">
 		<div class="grid-container">
-			<div id="1-info" onclick="setAktivSida(this, 'p1')"
-				style="background-color: rgb(52, 52, 52); color: rgb(255, 255, 255);">
+			<div id="1-info" onclick="setAktivSida(this, 'p1')">
 				<h1>1</h1>
-				<p>Skaffa fakta</p>
+				<p><strong>Skaffa fakta</strong></p>
 			</div>
-			<div id="2-jamfor" onclick="setAktivSida(this, 'p2')"
-				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+			<div id="2-jamfor" onclick="setAktivSida(this, 'p2')">
 				<h1>2</h1>
-				<p>Jämför alternativ</p>
+				<p><strong>Jämför alternativ</strong></p>
 			</div>
-			<div id="3-kansla" onclick="setAktivSida(this, 'p3')"
-				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+			<div id="3-kansla" onclick="setAktivSida(this, 'p3')">
 				<h1>3</h1>
-				<p>Din känslor</p>
+				<p><strong>Din känslor</strong></p>
 			</div>
-			<div id="4-dittval" onclick="setAktivSida(this, 'p4')"
-				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+			<div id="4-dittval" onclick="setAktivSida(this, 'p4')">
 				<h1>4</h1>
-				<p>Ditt beslut</p>
+				<p><strong>Ditt beslut</strong></p>
 			</div>
-			<div id="5-quiz" onclick="setAktivSida(this, 'p5')"
-				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+			<div id="5-quiz" onclick="setAktivSida(this, 'p5')">
 				<h1>5</h1>
-				<p>Fråga dig själv</p>
+				<p><strong>Fråga dig själv</strong></p>
 			</div>
-			<div id="6-summary" onclick="setAktivSida(this, 'p6')"
-				style="background-color: rgb(238, 238, 238); color: rgb(0, 0, 0);">
+			<div id="6-summary" onclick="setAktivSida(this, 'p6')">
 				<h1>6</h1>
-				<p>Sammanställning</p>
+				<p><strong>Dina svar</strong></p>
 			</div>
 		</div>
 	</div>
 	<div class="pagecontainer">
-		<div id="p1" style="display: block;">Sidan 1</div>
-		<div id="p2" style="display: none;">Sidan 2</div>
-		<div id="p3" style="display: none;">Sidan 3</div>
-		<div id="p4" style="display: none;">Sidan 4</div>
+		<div id="p1">
+			<div class="headerp">
+				<h1>Fakta om Antidepressiva</h1>
+			</div>
+			<div class="maincontainer">
+				<div class="containerpages">
+					<h2>Dina alternativ</h2>
+					<p><strong>Viktiga punkter att komma ihåg.</strong></p>
+					<ul>
+						<li>Den bästa anledningen till att du slutar ta ditt antidepressiva läkemedel är att du mår
+							bättre och att du och din läkare tror att du kommer att fortsätta att må bra efter att du
+							slutat ta det.</li>
+						<li>Ett antidepressivt medel behöver tid att fungera. Du kan behöva ta det i 1 till 3 veckor
+							innan du börjar känna dig bättre och i 6 till 8 veckor innan du känner dig mycket bättre.
+						</li>
+						<li>De flesta biverkningar av antidepressiva läkemedel är mer störande än allvarliga. De kan
+							ofta hanteras. Eller så kanske kan din läkare ordinera en annan medicin.</li>
+						<li>Om du känner att du inte har råd med medicinen, kan din läkare kanske ordinera en som kostar
+							mindre.</li>
+						<li>Minst hälften av de som lider av depression kommer att få det igen. Detta kallas ett
+							återfall. Men om du fortsätter att ta din medicin i minst 6 månader efter att du har mått
+							bättre, kan du kanske minska risken för att du kommer att få ett återfall.</li>
+						<li>Om du planerar att sluta ta din medicin ska du först tala med din läkare om hur du gör det
+							säkert. Det kan hända att du måste trappa ned långsamt över tiden. Att plötsligt stoppa
+							vissa läkemedel kan orsaka biverkningar, som influensaliknande symtom och yrsel.</li>
+						<li>Att träffa en rådgivare fungerar bra för att hjälpa personer med depression att må bättre.
+						</li>
+						<li>Depression är inget att bli generad över. Det är ett hälsoproblem, inte ett dåligt
+							karaktärsdrag.</li>
+					</ul>
+				</div>
+				<div class="accordioncontainer">
+					<h2>Vanlig frågor</h2>
+					<button class="accordion">Hur fungerar antidepressiva läkemedel?</button>
+					<div class="panel">
+						<p>Antidepressiva läkemedel hjälper till att återställa den normala balansen mellan
+							hjärnkemikalier. När dessa hjärnkemikalier är i rätt balans blir din depression bättre.
+							(OBS!!! Detta stycke stryker väl vi?)</p>
+						<p>Du kan börja känna dig bättre inom 1 till 3 veckor efter att du började ta medicinen. Men du
+							kan behöva ta det i 6 till 8 veckor för att få full nytta och känna dig mycket bättre. Om du
+							har frågor eller problem angående dina läkemedel eller om du inte känner dig bättre om 3
+							veckor, tala med din läkare.</p>
 
-		<div id="p5" style="display: none;">
-			<div class="headerquizpage">
+						<p>Det finns många läkemedel för depression. Om den första du försöker inte fungerar, brukar en
+							annan vanligtvis fungera. Du kan behöva prova flera läkemedel innan du hittar den som
+							fungerar bäst för dig.</p>
+
+						<p>Om biverkningarna stör dig, prata med din läkare. Det finns många saker du kan göra för att
+							minska biverkningar. Din läkare kanske kan ordinera en annan medicin.</p>
+
+					</div>
+
+					<button class="accordion">Hur länge behöver du ta medicin för din depression?</button>
+					<div class="panel">
+						<p>Om du tar din medicin i minst 6 månader efter att du har mått bättre kan du hindra dig att
+							bli deprimerad igen. Om detta inte är första gången du har varit deprimerad, kan din läkare
+							vilja att du tar medicinen under en ännu längre tid. Men oroa dig inte - oavsett hur länge
+							du tar ett antidepressiv medel, kan du inte bli beroende av det. (OBS!!! Ska vi verkligen ha
+							denna mening???)</p>
+						<p>Den bästa anledningen till att du slutar ta ditt antidepressiva läkemedel är att du mår
+							bättre och du och din läkare tror att du kommer att stanna bra efter att du slutat ta det.
+						</p>
+						<p>Om du planerar att sluta med din medicin ska du först tala med din läkare om hur du gör det
+							säkert. Det kan hända att du måste trappa ned långsamt över tiden. Att sluta tvärt med vissa
+							läkemedel kan orsaka problem, som influensaliknande symtom och yrsel.</p>
+
+					</div>
+
+					<button class="accordion">Hjälper samtalsterapi vid depression?</button>
+					<div class="panel">
+						<p>Att se en terapeut fungerar bra för att hjälpa personer med depression att må bättre.
+							Samtalsterapi kan också hjälpa till att förhindra att din depression kommer tillbaka efter
+							att du har slutat ta din medicin.</p>
+						<p><strong>De typer av terapi som oftast används för att behandla depression är:</strong></p>
+						<ul>
+
+							<li><strong>Kognitiv beteendeterapi</strong>, en typ av rådgivning som lär dig hur du blir
+								friskare genom att ändra några av dina tankar och beteendemönster. Du kan få denna
+								terapi en-mot-en med en terapeut eller i en grupp.</li>
+							<li><strong>Interpersonell terapi</strong>, som fokuserar på sociala och personliga
+								relationer och relaterade problem.</li>
+							<li><strong>Problemlösningsterapi</strong>, som fokuserar på de problem du står inför nu och
+								hjälper dig att hitta lösningar.</li>
+							<li><strong>Familjeterapi</strong>, en typ av rådgivning som involverar hela familjen.</li>
+
+						</ul>
+					</div>
+
+					<button class="accordion">Vilka andra saker kan du göra för att behandla depression?</button>
+					<div class="panel">
+						<p>Du kanske vill prova andra sätt att hjälpa till att behandla eller förebygga depression.</p>
+						<p><strong>Generell hälsa:</strong> Att ta hand om din övergripande hälsa kan hjälpa dig att
+							behandla depression.<br>
+							Du kan:
+						</p>
+						<ul>
+
+							<li>Äta hälsosam mat.</li>
+							<li>Undvika alkohol.</li>
+							<li>Få motion.</li>
+							<li>Få gott om sömn.</li>
+							<li>Söka stöd från vänner och familj.</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<script>
+					var acc = document.getElementsByClassName("accordion");
+					var i;
+
+					for (i = 0; i < acc.length; i++) {
+						acc[i].addEventListener("click", function () {
+							this.classList.toggle("active");
+							var panel = this.nextElementSibling;
+							if (panel.style.display === "block") {
+								panel.style.display = "none";
+							} else {
+								panel.style.display = "block";
+							}
+						});
+					}
+				</script>
+			</div>
+		</div>
+		<div id="p2" style="display: none">
+			<div class="headerp">
+				<h1>Jämför</h1>
+			</div>
+			<div class="maincontainer">
+				<div class="headerpages">
+					<h2>Jämför dina alternativ</h2>
+				</div>
+				<div class="grid-containerpage2">
+					<div style="background-color:#eee"></div>
+					<div style="background-color:#eee"><strong>Sluta ta ditt antidepressiva läkemedel</strong></div>
+					<div style="background-color:#eee"><strong>Fortsätta ta det</strong></div>
+					<div style="background-color:#eee"><strong>Vad är vanligtvis involverat?</strong></div>
+					<div>
+						<ul>
+							<li>Du och din läkare håller med om att du mår bra och kommer att hålla dig bra om du slutar
+								ta medicinen.</li>
+							<li>Under din läkares vård minskar du långsamt din dos av medicin tills du slutar.</li>
+							<li>Du kan ha samtalsterapi för att hjälpa dig att hantera problem och hjälpa till att ändra
+								hur du tänker och känner.</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>Du fortsätter att ta din medicin som din läkare rekommenderar.</li>
+							<li>Du kan ha råd till att hjälpa dig att hantera problem och hjälpa dig att ändra hur du
+								tänker och känner</li>
+							<li>Du kan göra en plan om att sluta ta läkemedlet när du och din läkare tror att du är
+								redo.</li>
+						</ul>
+					</div>
+					<div style="background-color:#eee"><strong>Vilka är fördelarna?</strong></div>
+					<div>
+						<ul>
+							<li>Du behöver inte ta ett piller varje dag.</li>
+							<li>Du kommer inte få biverkningar från medicinen.</li>
+							<li>Du kommer inte att ha kostnaden för medicin.</li>
+							<li>Du behöver inte oroa dig för att undvika vissa andra läkemedel på grund av möjliga
+								läkemedelsinteraktioner.</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>Du behöver inte ta ett piller varje dag.</li>
+						</ul>
+					</div>
+					<div style="background-color:#eee"><strong>Vilka är riskerna och biverkningarna?</strong></div>
+					<div>
+						<ul>
+							<li>Din depression kan komma tillbaka.</li>
+							<li>Om du plötsligt slutar ta medicinen, kan du få problem som influensaliknande symtom
+								eller yrsel. Du måste sakta minska dosen över tid, enligt din läkares instruktioner.
+							</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>Antidepressiva kan ha biverkningar, som kan innefatta huvudvärk, muntorrhet, illamående
+								eller problem med sexlust eller förmåga.</li>
+							<li>Läkemedlet kan kosta mycket.</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div id="p3" style="display: none">Sidan 3</div>
+		<div id="p4" style="display: none">Sidan 4</div>
+
+		<div id="p5" style="display: none">
+			<div class="headerp">
 				<h2>Vad behöver du ytterligare för att fatta ditt beslut?</h2>
 			</div>
 			<div class="maincontainer">
-				<div class="headerquiz">
+				<div class="headerpages">
 					<h2>Kontrollera fakta</h2>
 				</div>
-				<div class="containerquiz">
+				<div class="containerpages">
 					<h2><strong>1. Vad är den bästa anledningen att sluta ta depression medicin?</strong></h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Eftersom du känner dig lite bättre<br>
-					<input id="quiz1b" type="radio" name="quiz1" value="b"> Eftersom du har använt den i 3 månader, och det är
-					tillräckligt länge för att bli bättre<br>
-					<input id="quiz1c" type="radio" name="quiz1" value="c"> Eftersom du mår bättre, och du och din läkare tror att
-					du kommer att fortsätta att må bra utan läkemedel<br>
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Eftersom du har använt den i 3 månader, och
+					det är tillräckligt länge för att bli bättre<br>
+					<input id="quiz1c" type="radio" name="quiz1" value="c"> Eftersom du mår bättre, och du och din
+					läkare tror att du kommer att fortsätta att må bra utan läkemedel<br>
 					<input id="quiz1d" type="radio" name="quiz1" value="d"> Jag är inte säker
 				</div>
-				<div class="containerquiz">
-					<h2><strong>2. Hur lång tid behöver du ta antidepressiva för att minska risken att din depression kan komma
-							tillbaka?</strong></h2>
+				<div class="containerpages">
+					<h2><strong>2. Hur lång tid behöver du ta antidepressiva för att minska risken att din depression
+							kan komma tillbaka?</strong></h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ett par veckor<br>
 					<input id="quiz1b" type="radio" name="quiz1" value="b"> Några månader<br>
 					<input id="quiz1c" type="radio" name="quiz1" value="c"> Minst 6 månader<br>
 					<input id="quiz1d" type="radio" name="quiz1" value="d"> Jag är inte säker
 				</div>
-				<div class="containerquiz">
+				<div class="containerpages">
 					<h2><strong>3. Vad är den bästa anledningen att sluta ta depression medicin?</strong></h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Tala med din läkare först<br>
 					<input id="quiz1b" type="radio" name="quiz1" value="b"> Plötsligt<br>
@@ -202,20 +478,21 @@
 			</div>
 			<br>
 			<div class="maincontainer">
-				<div class="headerquiz">
+				<div class=headerpages>
 					<h1>Bestäm vad som kommer härnäst</h1>
 				</div>
-				<div class="containerquiz">
+				<div class="containerpages">
 					<h2><strong>1. Förstår du vilka alternativ som är tillgängliga för dig?</strong></h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ja
 					<input id="quiz1b" type="radio" name="quiz1" value="b"> Nej
 				</div>
-				<div class="containerquiz">
-					<h2><strong>2. Är du klar över vilka fördelar och biverkningar som betyder mest för dig?</strong></h2>
+				<div class="containerpages">
+					<h2><strong>2. Är du klar över vilka fördelar och biverkningar som betyder mest för dig?</strong>
+					</h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ja
 					<input id="quiz1b" type="radio" name="quiz1" value="b"> Nej
 				</div>
-				<div class="containerquiz">
+				<div class="containerpages">
 					<h2><strong>3. Har du tillräckligt med stöd och råd från andra att göra ett val?</strong></h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Ja
 					<input id="quiz1b" type="radio" name="quiz1" value="b"> Nej
@@ -223,32 +500,33 @@
 			</div>
 			<br>
 			<div class="maincontainer">
-				<div class="headerquiz">
+				<div class=headerpages>
 					<h1>Hur säker är du?</h1>
 				</div>
-				<div class="containerquiz">
+				<div class="containerpages">
 					<p><strong>1. Här ska en specialslider finnas</strong></p>
 				</div>
 
-				<div class="containerquiz">
+				<div class="containerpages">
 					<h2><strong>2. Kolla vad du behöver göra innan du fattar detta beslut.</strong></h2>
 					<input id="quiz1a" type="radio" name="quiz1" value="a"> Jag är redo att vidta åtgärder.<br>
-					<input id="quiz1b" type="radio" name="quiz1" value="b"> Jag vill diskutera alternativen med andra.<br>
-					<input id="quiz1c" type="radio" name="quiz1" value="c"> Jag vill lära mig mer om mina alternativ.<br>
+					<input id="quiz1b" type="radio" name="quiz1" value="b"> Jag vill diskutera alternativen med
+					andra.<br>
+					<input id="quiz1c" type="radio" name="quiz1" value="c"> Jag vill lära mig mer om mina
+					alternativ.<br>
 
 				</div>
-				<div class="containerquiz">
+				<div class="containerpages">
 					<h2><strong>3. Använd följande utrymme för att lista frågor, problem och nästa steg.</strong></h2>
-					<textarea id="plaintext" rows="6" cols="80"></textarea>
+					<textarea id="plaintext" rows="6" cols="80">
 
+					</textarea>
 				</div>
 			</div>
 
 		</div>
-		<div id="p6" style="display: none;">sidan 6</div>
+		<div id="p6" style="display: none">sidan 6</div>
 	</div>
-
-
 </body>
 
 </html>
