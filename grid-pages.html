@@ -5,28 +5,52 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Medicinsktbeslutstöd</title>
 	<style>
+		
+		* {
+  box-sizing: border-box;
+}
+		@media screen and (min-width: 601px) {
+  div.grid-container {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  div.grid-container {
+    font-size: 13px;
+  }
+}
+		
+		.containermain {
+			width: 100%;
+			margin: auto;
+			overflow: auto;
+			position: relative;
+			
+		}	
 		.introtext {
-			width: 50%;
+			width: auto;
 			margin: auto;
 		}
 
 		.container {
-			width: 50%;
+			width: auto;
 			margin: auto;
 		}
-
+		
+		
 		.grid-container {
 			display: grid;
 			grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
 			grid-gap: 0px;
-			padding: 55px 55px 0px 55px;
+			padding: 40px 0px 0px 0px;
 			margin-bottom: 0px;
 			background-color: #343434;
 		}
 
 		.grid-container>div {
 			background-color: #eee;
-			padding: 20px 0;
+			padding: 0px 0;
 			background-repeat: no-repeat;
 			background-position: center;
 			border: 1px solid #5f5f5f;
@@ -35,7 +59,7 @@
 		}
 
 		.pagecontainer {
-			width: 50%;
+			width: auto;
 			margin: auto;
 		}
 
@@ -45,40 +69,45 @@
 			Pages css
 		*/
 		.maincontainer {
-			width: auto;
-			margin: auto;
+			/*width: 100%;
+			margin: auto;*/
 			border: solid 1px #343434;
+			padding: 10px;
 
 		}
 
 		.headerp {
+			/*width: 65%;
+			margin: auto;*/
 			background-color: #343434;
 			color: #fff;
-			padding: 10px 10px 10px 20px;
+			padding: 5px 10px 5px 20px;
 			margin-bottom: 10px;
 
 		}
 
 		.headerpages {
 			width: auto;
+			margin: auto;
 			background-color: #343434;
 			color: #fff;
 			padding: 10px;
 			margin-bottom: 10px;
-			margin-top: 10px;
+			/*margin-top: 10px;
 			margin-left: 10px;
-			margin-right: 10px;
+			margin-right: 10px;*/
 			text-align: center;
 		}
 
 		.containerpages {
 			width: auto;
+			margin: auto;
 			padding: 25px;
 			background-color: #eee;
-			margin-bottom: 10px;
+			/*margin-bottom: 10px;
 			margin-top: 10px;
 			margin-left: 10px;
-			margin-right: 10px;
+			margin-right: 10px;*/
 
 		}
 
@@ -152,7 +181,7 @@
 			display: grid;
 			grid-template-columns: auto auto auto;
 			grid-gap: 0px;
-			padding: 10px;
+			/*padding: 10px;*/
 		}
 
 		.grid-containerpage2>div {
@@ -164,6 +193,128 @@
 		/*
 			Pages css end
 		*/
+		
+		/*
+			Page 3 css
+		*/
+		
+			 
+.containerslidetext {
+   width: auto;
+   margin: auto;
+
+    }
+	
+.grid-topslidetext {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: #eee;
+  padding: 10px 10px 10px 10px;
+	
+}
+
+.grid-topslidetext > div {
+	font-weight: bold;
+		margin-bottom:10px
+  /*text-align: center;*/
+}
+	  
+    .containerSlide {
+      width: auto;
+      margin: auto;
+    }
+		
+@media screen and (max-width: 600px) {
+  div.grid-containerSlide {
+    padding: 0;
+	word-wrap: break-word;
+  }
+}
+    .grid-containerSlide {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto;
+      padding: 0px 55px 0px 55px;
+      margin-bottom: 0px;
+      background-color: #eee;
+    }
+
+    .grid-middle {
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+	  
+   .containerfooter {
+   width: auto;
+   margin: auto;
+
+    }
+	  
+  .grid-footerSlide {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  background-color: #eee;
+  padding: 10px 10px 10px 10px;
+    }
+	  
+  .grid-footerSlide>div {
+  font-weight: normal;
+  text-align: left;
+		 
+    }
+		
+.containertoptextSlide {
+   width: auto;
+   margin: auto;
+	margin-bottom: 10px;
+
+    }
+		
+		
+.grid-toptextSlide {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  background-color: #eee;
+  padding: 10px 10px 10px 10px;
+    }
+	  
+  .grid-toptextSlide>div {
+  font-weight: normal;
+		 
+    }
+	  
+    
+    .vald {
+      background-color: #5f5f5f;
+      /*padding: 20px 0;*/
+      background-repeat: no-repeat;
+      background-position: center;
+      
+    }
+
+    .ejvald {
+      background-color: #ccc;
+      padding: 20px 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid #5D5D5D;
+    }
+
+    .leftmiddle {
+      border-right: solid 1px #000;
+      background-image: url(button-middle-left.png);
+      background-position: right;
+    }
+
+    .rightmiddle {
+      border-left: solid 1px #000;
+      background-image: url(button-middle-right.png);
+      background-position: left;
+    }
+		
+		/*
+			Slide end css
+		*/
+		
 	</style>
 	<script language="javascript">
 
@@ -208,11 +359,105 @@
 		}
 
 	</script>
+	
+	  <script language="javascript">
+
+    function toggleSelection(element) {
+      const valLista = [
+        document.getElementById("val3L"),
+        document.getElementById("val2L"),
+        document.getElementById("val1L"),
+        document.getElementById("val0L"),
+        document.getElementById("val0R"),
+        document.getElementById("val1R"),
+        document.getElementById("val2R"),
+        document.getElementById("val3R")
+      ];
+
+      // Kollar att vi har klickat på någon av knapparna i mitten
+      if (element.id === 'val0L' || element.id === 'val0R') {
+
+        // Går igenom listan med möjliga val och sätter class ejvald på det som inte är klickat på
+        valLista.forEach((val) => {
+
+          // Kollar om där vi är i listan matchar det som vi klickat på (id) och sätter class vald
+          // annars (else) sätts class ejvald
+          if (val.id === 'val0L' || val.id === 'val0R') {
+
+            if (val.id.match('.*L$') !== null) {
+              val.className = 'vald leftmiddle';
+            } else {
+              val.className = 'vald rightmiddle';
+            }
+
+          } else {
+            val.className = 'ejvald';
+          }
+
+        });
+
+      } else if (element.id.match('.*L$') !== null) {
+        valLista.forEach((val) => {
+          if (val.id.match('.*R$') !== null) {
+            if (val.id.match('.*0R$') !== null) {
+              val.className = 'ejvald rightmiddle';
+            } else {
+              val.className = 'ejvald';
+            }
+          }
+        });
+        if (element.id.match('.*1L$') !== null) {
+          valLista[0].className = 'ejvald';
+          valLista[1].className = 'ejvald';
+          valLista[2].className = 'vald';
+          valLista[3].className = 'vald leftmiddle';
+        } else if (element.id.match('.*2L$') !== null) {
+          valLista[0].className = 'ejvald';
+          valLista[1].className = 'vald';
+          valLista[2].className = 'vald';
+          valLista[3].className = 'vald leftmiddle';
+        } else if (element.id.match('.*3L$') !== null) {
+          valLista[0].className = 'vald';
+          valLista[1].className = 'vald';
+          valLista[2].className = 'vald';
+          valLista[3].className = 'vald leftmiddle';
+        }
+      } else if (element.id.match('.*R$') !== null) {
+        valLista.forEach((val) => {
+          if (val.id.match('.*L$') !== null) {
+            if (val.id.match('.*0L$') !== null) {
+              val.className = 'ejvald leftmiddle';
+            } else {
+              val.className = 'ejvald';
+            }
+          }
+        });
+        if (element.id.match('.*1R$') !== null) {
+          valLista[7].className = 'ejvald';
+          valLista[6].className = 'ejvald';
+          valLista[5].className = 'vald';
+          valLista[4].className = 'vald rightmiddle';
+        } else if (element.id.match('.*2R$') !== null) {
+          valLista[7].className = 'ejvald';
+          valLista[6].className = 'vald';
+          valLista[5].className = 'vald';
+          valLista[4].className = 'vald rightmiddle';
+        } else if (element.id.match('.*3R$') !== null) {
+          valLista[7].className = 'vald';
+          valLista[6].className = 'vald';
+          valLista[5].className = 'vald';
+          valLista[4].className = 'vald rightmiddle';
+        }
+      }
+    }
+  </script>
+	
 </head>
 
 <body>
+	<div class="containermain">
 	<div class="introtext">
-		<h1>Depression: Ska jag sluta ta mitt antidepressiva medel?</h1>
+		<h3>Depression: Ska jag sluta ta mitt antidepressiva medel?</h3>
 		<p>Du kanske vill ha något att säga till om i detta beslut, eller så kan du helt enkelt vilja följa din läkares
 			rekommendation. Hur som helst, den här informationen hjälper dig att förstå vilka dina val är så att du kan
 			prata om dem med din läkare.</p>
@@ -220,27 +465,27 @@
 	<div class="container">
 		<div class="grid-container">
 			<div id="1-info" onclick="setAktivSida(this, 'p1')">
-				<h1>1</h1>
+				<h3>1</h3>
 				<p><strong>Skaffa fakta</strong></p>
 			</div>
 			<div id="2-jamfor" onclick="setAktivSida(this, 'p2')">
-				<h1>2</h1>
+				<h3>2</h3>
 				<p><strong>Jämför alternativ</strong></p>
 			</div>
 			<div id="3-kansla" onclick="setAktivSida(this, 'p3')">
-				<h1>3</h1>
+				<h3>3</h3>
 				<p><strong>Din känslor</strong></p>
 			</div>
 			<div id="4-dittval" onclick="setAktivSida(this, 'p4')">
-				<h1>4</h1>
+				<h3>4</h3>
 				<p><strong>Ditt beslut</strong></p>
 			</div>
 			<div id="5-quiz" onclick="setAktivSida(this, 'p5')">
-				<h1>5</h1>
+				<h3>5</h3>
 				<p><strong>Fråga dig själv</strong></p>
 			</div>
 			<div id="6-summary" onclick="setAktivSida(this, 'p6')">
-				<h1>6</h1>
+				<h3>6</h3>
 				<p><strong>Dina svar</strong></p>
 			</div>
 		</div>
@@ -248,7 +493,7 @@
 	<div class="pagecontainer">
 		<div id="p1">
 			<div class="headerp">
-				<h1>Fakta om Antidepressiva</h1>
+				<h3>Fakta om Antidepressiva</h3>
 			</div>
 			<div class="maincontainer">
 				<div class="containerpages">
@@ -257,7 +502,7 @@
 					<ul>
 						<li>Den bästa anledningen till att du slutar ta ditt antidepressiva läkemedel är att du mår
 							bättre och att du och din läkare tror att du kommer att fortsätta att må bra efter att du
-							slutat ta det.</li>
+							slutat ta det.</li><br>
 						<li>Ett antidepressivt medel behöver tid att fungera. Du kan behöva ta det i 1 till 3 veckor
 							innan du börjar känna dig bättre och i 6 till 8 veckor innan du känner dig mycket bättre.
 						</li>
@@ -375,7 +620,7 @@
 		</div>
 		<div id="p2" style="display: none">
 			<div class="headerp">
-				<h1>Jämför</h1>
+				<h3>Jämför</h3>
 			</div>
 			<div class="maincontainer">
 				<div class="headerpages">
@@ -440,8 +685,129 @@
 			</div>
 
 		</div>
-		<div id="p3" style="display: none">Sidan 3</div>
-		<div id="p4" style="display: none">Sidan 4</div>
+		<div id="p3" style="display: none">
+
+<div class="headerp">
+				<h3>Vad är viktigast för dig?</h3>
+			</div>
+			<div class="maincontainer">
+				<div>
+					<p>Dina personliga känslor är lika viktiga som medicinskt fakta. Tänk på vad som är viktigast för dig i detta beslut, och visa hur du känner till följande påståenden.</p>
+				</div>
+<div class="containertoptextSlide">
+<div class="grid-toptextSlide">
+  <div><strong>Skäl att sluta ta ditt antidepressiva medel</strong></div>
+	<div></div>
+	<div></div>
+	<div></div>
+  <div align="right"><strong>Skäl att fortsätta ta det</strong></div>
+  
+</div>
+</div>
+			
+		<div class="containerslidetext">
+<div class="grid-topslidetext">
+  <div>Jag mår mycket bättre.</div>
+	<div></div>
+	<div></div>
+  <div align="right">Jag mår inte så bra som jag skulle vilja.</div>
+  
+</div>
+	</div>
+  <div class="containerSlide">
+    <div class="grid-containerSlide">
+
+      <div class="ejvald" id="val3L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val2L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val1L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="grid-middle">
+        <div class="ejvald leftmiddle" id="val0L" onClick="javascript:toggleSelection(this)"></div>
+        <div class="ejvald rightmiddle" id="val0R" onClick="javascript:toggleSelection(this)"></div>
+      </div>
+      <div class="ejvald" id="val1R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val2R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val3R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+    </div>
+	  </div>
+	
+	<div class="containerfooter">
+<div class="grid-footerSlide">
+  <div></div>
+	<div>Mer viktigt</div>
+	<div></div>
+  <div>Lika viktigt</div>
+	<div></div>
+	<div>Mer viktigt</div>
+  
+</div>
+		
+</div></div></div>
+		
+		<div id="p4" style="display: none">
+		
+		<div class="headerp">
+				<h3>Var lutar du åt nu?</h3>
+			</div>
+			<div class="maincontainer">
+				<div>
+					<p>Nu när du har tänkt på fakta och dina känslor kan du ha en allmän uppfattning om var du står på detta beslut. Visa vilket sätt du lutar just nu.</p>
+				</div>
+
+			
+		<div class="containerslidetext">
+<div class="grid-topslidetext">
+  <div></div>
+	<div>Stopp av läkemedlet</div>
+	<div></div>
+  <div>Fortsätta med medicinen</div>
+  
+</div>
+	</div>
+  <div class="containerSlide">
+    <div class="grid-containerSlide">
+
+      <div class="ejvald" id="val3L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val2L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val1L" style="background-image: url(button-left.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="grid-middle">
+        <div class="ejvald leftmiddle" id="val0L" onClick="javascript:toggleSelection(this)"></div>
+        <div class="ejvald rightmiddle" id="val0R" onClick="javascript:toggleSelection(this)"></div>
+      </div>
+      <div class="ejvald" id="val1R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val2R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+      <div class="ejvald" id="val3R" style="background-image: url(button-right.png)"
+        onClick="javascript:toggleSelection(this)"></div>
+
+      
+    </div>
+	  
+  </div></div>
+	
+	<div class="containerfooter">
+<div class="grid-footerSlide">
+  <div></div>
+	<div>Lutar mer åt detta håll</div>
+	<div>Har ej bestämt mig</div>
+  <div>Lutar mer åt detta håll</div>
+  
+</div>
+		
+		</div>
+			</div>
+			</div>
+		
+		</div>
 
 		<div id="p5" style="display: none">
 			<div class="headerp">
@@ -479,7 +845,7 @@
 			<br>
 			<div class="maincontainer">
 				<div class=headerpages>
-					<h1>Bestäm vad som kommer härnäst</h1>
+					<h3>Bestäm vad som kommer härnäst</h3>
 				</div>
 				<div class="containerpages">
 					<h2><strong>1. Förstår du vilka alternativ som är tillgängliga för dig?</strong></h2>
@@ -501,7 +867,7 @@
 			<br>
 			<div class="maincontainer">
 				<div class=headerpages>
-					<h1>Hur säker är du?</h1>
+					<h3>Hur säker är du?</h3>
 				</div>
 				<div class="containerpages">
 					<p><strong>1. Här ska en specialslider finnas</strong></p>
@@ -527,6 +893,7 @@
 		</div>
 		<div id="p6" style="display: none">sidan 6</div>
 	</div>
+	</div></div>
 </body>
 
 </html>
