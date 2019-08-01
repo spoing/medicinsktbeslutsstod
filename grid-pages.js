@@ -154,3 +154,27 @@ function toggleSelection(element) {
         }
     }
 }
+
+function toggleSelectionRight(element) {
+    var fraga = element.parentElement;
+
+    const valLista = [
+        fraga.children[0],
+        fraga.children[1],
+        fraga.children[2],
+        fraga.children[3],
+        fraga.children[4],
+        fraga.children[5],
+        fraga.children[6]
+    ];
+
+    if (element.attributes.name.value.match('.*R$') !== null) {
+        var markeraSom = 'vald';
+        valLista.forEach((val) => {
+            val.className = markeraSom;
+            if (val.attributes.name.value === element.attributes.name.value) {
+                markeraSom = 'ejvald';
+            }
+        });
+    }
+}
