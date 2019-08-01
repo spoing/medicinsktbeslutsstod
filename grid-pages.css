@@ -1,0 +1,284 @@
+* {
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 601px) {
+    div.grid-container {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.grid-container {
+        font-size: 13px;
+    }
+}
+
+.containermain {
+    width: 100%;
+    margin: auto;
+    overflow: auto;
+    position: relative;
+}
+
+.introtext {
+    width: auto;
+    margin: auto;
+}
+
+.container {
+    width: auto;
+    margin: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    grid-gap: 0px;
+    padding: 40px 0px 0px 0px;
+    margin-bottom: 0px;
+    background-color: #343434;
+}
+
+.grid-container>div {
+    background-color: #eee;
+    padding: 0px 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #5f5f5f;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pagecontainer {
+    width: auto;
+    margin: auto;
+}
+
+/*
+    Pages css
+*/
+
+.maincontainer {
+    border: solid 1px #343434;
+    padding: 10px;
+}
+
+.headerp {
+    background-color: #343434;
+    color: #fff;
+    padding: 5px 10px 5px 20px;
+    margin-bottom: 10px;
+}
+
+.headerpages {
+    width: auto;
+    margin: auto;
+    background-color: #343434;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.containerpages {
+    width: auto;
+    margin: auto;
+    padding: 25px;
+    background-color: #eee;
+}
+
+/*
+    Page 1 accordion css
+*/
+
+.accordioncontainer {
+    width: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 
+    Add a background color to the button if it is clicked on (add the .active class with JS), 
+    and when you move the mouse over it (hover)
+*/
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* 
+    Style the accordion panel. 
+    Note: hidden by default 
+*/
+
+.panel {
+    padding: 0 0 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+button.accordion::after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active::after {
+    content: "\2212";
+}
+
+/*
+    Page 1 accordion css end
+*/
+
+/* 
+    Page 2 css
+*/
+
+.grid-containerpage2 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 0px;
+}
+
+.grid-containerpage2>div {
+    border: 1px solid #b3b3b3;
+    text-align: left;
+    padding: 10px;
+}
+
+/*
+    Pages css end
+*/
+
+/*
+    Page 3 css
+*/
+
+.containerslidetext {
+    width: auto;
+    margin: auto;
+}
+
+.grid-topslidetext {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #eee;
+    padding: 10px 10px 10px 10px;
+}
+
+.grid-topslidetext>div {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.containerSlide {
+    width: auto;
+    margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+    div.grid-containerSlide {
+        padding: 0;
+        word-wrap: break-word;
+    }
+}
+
+.grid-containerSlide {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    padding: 0px 55px 0px 55px;
+    margin-bottom: 0px;
+    background-color: #eee;
+}
+
+.grid-middle {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.containerfooter {
+    width: auto;
+    margin: auto;
+}
+
+.grid-footerSlide {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    background-color: #eee;
+    padding: 10px 10px 10px 10px;
+}
+
+.grid-footerSlide>div {
+    font-weight: normal;
+    text-align: left;
+}
+
+.containertoptextSlide {
+    width: auto;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.grid-toptextSlide {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: #eee;
+    padding: 10px 10px 10px 10px;
+}
+
+.grid-toptextSlide>div {
+    font-weight: normal;
+}
+
+.vald {
+    background-color: #5f5f5f;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid rgb(24, 24, 24);
+    padding: 20px 0;
+}
+
+.ejvald {
+    background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid rgb(24, 24, 24);
+    padding: 20px 0;
+}
+
+.leftmiddle {
+    border-right: solid 1px #000;
+    background-image: url(button-middle-left.png);
+    background-position: right;
+}
+
+.rightmiddle {
+    border-left: solid 1px #000;
+    background-image: url(button-middle-right.png);
+    background-position: left;
+}
+
+/*
+    Slide end css
+*/

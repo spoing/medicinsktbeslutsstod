@@ -4,449 +4,9 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Medicinsktbeslutstöd</title>
-	<style>
-		* {
-			box-sizing: border-box;
-		}
+	<link rel="stylesheet" href="grid-pages.css">
+	<script src="grid-pages.js"></script>
 
-		@media screen and (min-width: 601px) {
-			div.grid-container {
-				font-size: 20px;
-			}
-		}
-
-		@media screen and (max-width: 600px) {
-			div.grid-container {
-				font-size: 13px;
-			}
-		}
-
-		.containermain {
-			width: 100%;
-			margin: auto;
-			overflow: auto;
-			position: relative;
-
-		}
-
-		.introtext {
-			width: auto;
-			margin: auto;
-		}
-
-		.container {
-			width: auto;
-			margin: auto;
-		}
-
-
-		.grid-container {
-			display: grid;
-			grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
-			grid-gap: 0px;
-			padding: 40px 0px 0px 0px;
-			margin-bottom: 0px;
-			background-color: #343434;
-		}
-
-		.grid-container>div {
-			background-color: #eee;
-			padding: 0px 0;
-			background-repeat: no-repeat;
-			background-position: center;
-			border: 1px solid #5f5f5f;
-			text-align: center;
-			cursor: pointer;
-		}
-
-		.pagecontainer {
-			width: auto;
-			margin: auto;
-		}
-
-		/*
-			Pages css
-		*/
-		.maincontainer {
-			border: solid 1px #343434;
-			padding: 10px;
-
-		}
-
-		.headerp {
-			background-color: #343434;
-			color: #fff;
-			padding: 5px 10px 5px 20px;
-			margin-bottom: 10px;
-
-		}
-
-		.headerpages {
-			width: auto;
-			margin: auto;
-			background-color: #343434;
-			color: #fff;
-			padding: 10px;
-			margin-bottom: 10px;
-			text-align: center;
-		}
-
-		.containerpages {
-			width: auto;
-			margin: auto;
-			padding: 25px;
-			background-color: #eee;
-		}
-
-		/*
-			Page 1 accordion css
-		*/
-		.accordioncontainer {
-			width: auto;
-			margin-bottom: 10px;
-			margin-top: 10px;
-			margin-left: 10px;
-			margin-right: 10px;
-		}
-
-		.accordion {
-			background-color: #eee;
-			color: #444;
-			cursor: pointer;
-			padding: 18px;
-			width: 100%;
-			text-align: left;
-			border: none;
-			outline: none;
-			transition: 0.4s;
-			font-size: 18px;
-			font-weight: bold;
-		}
-
-		/* 
-			Add a background color to the button if it is clicked on (add the .active class with JS), 
-			and when you move the mouse over it (hover)
-		*/
-		.active,
-		.accordion:hover {
-			background-color: #ccc;
-		}
-
-		/* 
-			Style the accordion panel. 
-			Note: hidden by default 
-		*/
-		.panel {
-			padding: 0 0 0 18px;
-			background-color: white;
-			display: none;
-			overflow: hidden;
-		}
-
-		button.accordion::after {
-			content: '\002B';
-			color: #777;
-			font-weight: bold;
-			float: right;
-			margin-left: 5px;
-		}
-
-		button.accordion.active::after {
-
-			content: "\2212";
-
-		}
-
-		/*
-			Page 1 accordion css end
-		*/
-
-		/* 
-			Page 2 css
-		*/
-		.grid-containerpage2 {
-			display: grid;
-			grid-template-columns: auto auto auto;
-			grid-gap: 0px;
-		}
-
-		.grid-containerpage2>div {
-			border: 1px solid #b3b3b3;
-			text-align: left;
-			padding: 10px;
-		}
-
-		/*
-			Pages css end
-		*/
-
-		/*
-			Page 3 css
-		*/
-
-
-		.containerslidetext {
-			width: auto;
-			margin: auto;
-
-		}
-
-		.grid-topslidetext {
-			display: grid;
-			grid-template-columns: auto auto auto auto;
-			background-color: #eee;
-			padding: 10px 10px 10px 10px;
-
-		}
-
-		.grid-topslidetext>div {
-			font-weight: bold;
-			margin-bottom: 10px;
-		}
-
-		.containerSlide {
-			width: auto;
-			margin: auto;
-		}
-
-		@media screen and (max-width: 600px) {
-			div.grid-containerSlide {
-				padding: 0;
-				word-wrap: break-word;
-			}
-		}
-
-		.grid-containerSlide {
-			display: grid;
-			grid-template-columns: auto auto auto auto auto auto auto;
-			padding: 0px 55px 0px 55px;
-			margin-bottom: 0px;
-			background-color: #eee;
-		}
-
-		.grid-middle {
-			display: grid;
-			grid-template-columns: auto auto;
-		}
-
-		.containerfooter {
-			width: auto;
-			margin: auto;
-
-		}
-
-		.grid-footerSlide {
-			display: grid;
-			grid-template-columns: auto auto auto auto auto auto;
-			background-color: #eee;
-			padding: 10px 10px 10px 10px;
-		}
-
-		.grid-footerSlide>div {
-			font-weight: normal;
-			text-align: left;
-
-		}
-
-		.containertoptextSlide {
-			width: auto;
-			margin: auto;
-			margin-bottom: 10px;
-
-		}
-
-
-		.grid-toptextSlide {
-			display: grid;
-			grid-template-columns: auto auto auto auto auto;
-			background-color: #eee;
-			padding: 10px 10px 10px 10px;
-		}
-
-		.grid-toptextSlide>div {
-			font-weight: normal;
-
-		}
-
-
-		.vald {
-			background-color: #5f5f5f;
-			background-repeat: no-repeat;
-			background-position: center;
-			border: 1px solid rgb(24, 24, 24);
-			padding: 20px 0;
-		}
-
-		.ejvald {
-			background-color: #ccc;
-			background-repeat: no-repeat;
-			background-position: center;
-			border: 1px solid rgb(24, 24, 24);
-			padding: 20px 0;
-		}
-
-		.leftmiddle {
-			border-right: solid 1px #000;
-			background-image: url(button-middle-left.png);
-			background-position: right;
-		}
-
-		.rightmiddle {
-			border-left: solid 1px #000;
-			background-image: url(button-middle-right.png);
-			background-position: left;
-		}
-
-		/*
-			Slide end css
-		*/
-	</style>
-	<script language="javascript">
-
-		function setAktivSida(klickatElement, elementId) {
-			const menyElementLista = [
-				document.getElementById("1-info"),
-				document.getElementById("2-jamfor"),
-				document.getElementById("3-kansla"),
-				document.getElementById("4-dittval"),
-				document.getElementById("5-quiz"),
-				document.getElementById("6-summary")
-			];
-
-			const sidElementLista = [
-				document.getElementById("p1"),
-				document.getElementById("p2"),
-				document.getElementById("p3"),
-				document.getElementById("p4"),
-				document.getElementById("p5"),
-				document.getElementById("p6")
-			];
-
-			// if(elementId === 'p6') {
-			// 	const fraga1 = document.getElementById('fraga1');
-			// 	var p6 = document.getElementById('p6');
-			// 	p6.innerHTML = "<br><br><div class='grid-containerSlide'>" + fraga1.innerHTML + "</div>";
-			// }
-
-			// Visa vilket menyval som är aktivt
-			menyElementLista.forEach((menyval) => {
-				if (menyval.id === klickatElement.id) {
-					klickatElement.style.backgroundColor = "#343434";
-					klickatElement.style.color = "#ffffff";
-				} else {
-					menyval.style.backgroundColor = "#eee";
-					menyval.style.color = "#000000";
-				}
-			});
-
-			// Visa sida med innehåll
-			sidElementLista.forEach((page) => {
-				if (page.id === elementId) {
-					page.style.display = "block";
-				} else {
-					page.style.display = "none";
-				}
-			});
-		}
-
-	</script>
-
-	<script language="javascript">
-
-		function toggleSelection(element) {
-			var fraga = element.parentElement;
-			if(fraga.id.match("fraga.*") == null) {
-				fraga = fraga.parentElement;
-			}
-
-			const valLista = [
-				fraga.children[0],
-				fraga.children[1],
-				fraga.children[2],
-				fraga.children[3].children[0],
-				fraga.children[3].children[1],
-				fraga.children[4],
-				fraga.children[5],
-				fraga.children[6]
-			];
-
-			// Kollar att vi har klickat på någon av knapparna i mitten
-			if (element.attributes.name.value === 'val0L' || element.attributes.name.value === 'val0R') {
-
-				// Går igenom listan med möjliga val och sätter class ejvald på det som inte är klickat på
-				valLista.forEach((val) => {
-
-					// Kollar om där vi är i listan matchar det som vi klickat på (id) och sätter class vald
-					// annars (else) sätts class ejvald
-					if (val.attributes.name.value === 'val0L' || val.attributes.name.value === 'val0R') {
-
-						if (val.attributes.name.value.match('.*L$') !== null) {
-							val.className = 'vald leftmiddle';
-						} else {
-							val.className = 'vald rightmiddle';
-						}
-
-					} else {
-						val.className = 'ejvald';
-					}
-
-				});
-
-			} else if (element.attributes.name.value.match('.*L$') !== null) {
-				valLista.forEach((val) => {
-					if (val.attributes.name.value.match('.*R$') !== null) {
-						if (val.attributes.name.value.match('.*0R$') !== null) {
-							val.className = 'ejvald rightmiddle';
-						} else {
-							val.className = 'ejvald';
-						}
-					}
-				});
-				if (element.attributes.name.value.match('.*1L$') !== null) {
-					valLista[0].className = 'ejvald';
-					valLista[1].className = 'ejvald';
-					valLista[2].className = 'vald';
-					valLista[3].className = 'vald leftmiddle';
-				} else if (element.attributes.name.value.match('.*2L$') !== null) {
-					valLista[0].className = 'ejvald';
-					valLista[1].className = 'vald';
-					valLista[2].className = 'vald';
-					valLista[3].className = 'vald leftmiddle';
-				} else if (element.attributes.name.value.match('.*3L$') !== null) {
-					valLista[0].className = 'vald';
-					valLista[1].className = 'vald';
-					valLista[2].className = 'vald';
-					valLista[3].className = 'vald leftmiddle';
-				}
-			} else if (element.attributes.name.value.match('.*R$') !== null) {
-				valLista.forEach((val) => {
-					if (val.attributes.name.value.match('.*L$') !== null) {
-						if (val.attributes.name.value.match('.*0L$') !== null) {
-							val.className = 'ejvald leftmiddle';
-						} else {
-							val.className = 'ejvald';
-						}
-					}
-				});
-				if (element.attributes.name.value.match('.*1R$') !== null) {
-					valLista[7].className = 'ejvald';
-					valLista[6].className = 'ejvald';
-					valLista[5].className = 'vald';
-					valLista[4].className = 'vald rightmiddle';
-				} else if (element.attributes.name.value.match('.*2R$') !== null) {
-					valLista[7].className = 'ejvald';
-					valLista[6].className = 'vald';
-					valLista[5].className = 'vald';
-					valLista[4].className = 'vald rightmiddle';
-				} else if (element.attributes.name.value.match('.*3R$') !== null) {
-					valLista[7].className = 'vald';
-					valLista[6].className = 'vald';
-					valLista[5].className = 'vald';
-					valLista[4].className = 'vald rightmiddle';
-				}
-			}
-		}
-	</script>
 
 </head>
 
@@ -454,8 +14,10 @@
 	<div class="containermain">
 		<div class="introtext">
 			<h3>Depression: Ska jag sluta ta mitt antidepressiva medel?</h3>
-			<p>Du kanske vill ha något att säga till om i detta beslut, eller så kan du helt enkelt vilja följa din läkares
-				rekommendation. Hur som helst, den här informationen hjälper dig att förstå vilka dina val är så att du kan
+			<p>Du kanske vill ha något att säga till om i detta beslut, eller så kan du helt enkelt vilja följa din
+				läkares
+				rekommendation. Hur som helst, den här informationen hjälper dig att förstå vilka dina val är så att du
+				kan
 				prata om dem med din läkare.</p>
 		</div>
 		<div class="container">
@@ -497,22 +59,28 @@
 						<p><strong>Viktiga punkter att komma ihåg.</strong></p>
 						<ul>
 							<li>Den bästa anledningen till att du slutar ta ditt antidepressiva läkemedel är att du mår
-								bättre och att du och din läkare tror att du kommer att fortsätta att må bra efter att du
+								bättre och att du och din läkare tror att du kommer att fortsätta att må bra efter att
+								du
 								slutat ta det.</li><br>
 							<li>Ett antidepressivt medel behöver tid att fungera. Du kan behöva ta det i 1 till 3 veckor
-								innan du börjar känna dig bättre och i 6 till 8 veckor innan du känner dig mycket bättre.
+								innan du börjar känna dig bättre och i 6 till 8 veckor innan du känner dig mycket
+								bättre.
 							</li>
 							<li>De flesta biverkningar av antidepressiva läkemedel är mer störande än allvarliga. De kan
 								ofta hanteras. Eller så kanske kan din läkare ordinera en annan medicin.</li>
-							<li>Om du känner att du inte har råd med medicinen, kan din läkare kanske ordinera en som kostar
+							<li>Om du känner att du inte har råd med medicinen, kan din läkare kanske ordinera en som
+								kostar
 								mindre.</li>
 							<li>Minst hälften av de som lider av depression kommer att få det igen. Detta kallas ett
-								återfall. Men om du fortsätter att ta din medicin i minst 6 månader efter att du har mått
+								återfall. Men om du fortsätter att ta din medicin i minst 6 månader efter att du har
+								mått
 								bättre, kan du kanske minska risken för att du kommer att få ett återfall.</li>
-							<li>Om du planerar att sluta ta din medicin ska du först tala med din läkare om hur du gör det
+							<li>Om du planerar att sluta ta din medicin ska du först tala med din läkare om hur du gör
+								det
 								säkert. Det kan hända att du måste trappa ned långsamt över tiden. Att plötsligt stoppa
 								vissa läkemedel kan orsaka biverkningar, som influensaliknande symtom och yrsel.</li>
-							<li>Att träffa en rådgivare fungerar bra för att hjälpa personer med depression att må bättre.
+							<li>Att träffa en rådgivare fungerar bra för att hjälpa personer med depression att må
+								bättre.
 							</li>
 							<li>Depression är inget att bli generad över. Det är ett hälsoproblem, inte ett dåligt
 								karaktärsdrag.</li>
@@ -525,32 +93,43 @@
 							<p>Antidepressiva läkemedel hjälper till att återställa den normala balansen mellan
 								hjärnkemikalier. När dessa hjärnkemikalier är i rätt balans blir din depression bättre.
 								(OBS!!! Detta stycke stryker väl vi?)</p>
-							<p>Du kan börja känna dig bättre inom 1 till 3 veckor efter att du började ta medicinen. Men du
-								kan behöva ta det i 6 till 8 veckor för att få full nytta och känna dig mycket bättre. Om du
+							<p>Du kan börja känna dig bättre inom 1 till 3 veckor efter att du började ta medicinen. Men
+								du
+								kan behöva ta det i 6 till 8 veckor för att få full nytta och känna dig mycket bättre.
+								Om du
 								har frågor eller problem angående dina läkemedel eller om du inte känner dig bättre om 3
 								veckor, tala med din läkare.</p>
 
-							<p>Det finns många läkemedel för depression. Om den första du försöker inte fungerar, brukar en
+							<p>Det finns många läkemedel för depression. Om den första du försöker inte fungerar, brukar
+								en
 								annan vanligtvis fungera. Du kan behöva prova flera läkemedel innan du hittar den som
 								fungerar bäst för dig.</p>
 
-							<p>Om biverkningarna stör dig, prata med din läkare. Det finns många saker du kan göra för att
+							<p>Om biverkningarna stör dig, prata med din läkare. Det finns många saker du kan göra för
+								att
 								minska biverkningar. Din läkare kanske kan ordinera en annan medicin.</p>
 
 						</div>
 
 						<button class="accordion">Hur länge behöver du ta medicin för din depression?</button>
 						<div class="panel">
-							<p>Om du tar din medicin i minst 6 månader efter att du har mått bättre kan du hindra dig att
-								bli deprimerad igen. Om detta inte är första gången du har varit deprimerad, kan din läkare
-								vilja att du tar medicinen under en ännu längre tid. Men oroa dig inte - oavsett hur länge
-								du tar ett antidepressiv medel, kan du inte bli beroende av det. (OBS!!! Ska vi verkligen ha
+							<p>Om du tar din medicin i minst 6 månader efter att du har mått bättre kan du hindra dig
+								att
+								bli deprimerad igen. Om detta inte är första gången du har varit deprimerad, kan din
+								läkare
+								vilja att du tar medicinen under en ännu längre tid. Men oroa dig inte - oavsett hur
+								länge
+								du tar ett antidepressiv medel, kan du inte bli beroende av det. (OBS!!! Ska vi
+								verkligen ha
 								denna mening???)</p>
 							<p>Den bästa anledningen till att du slutar ta ditt antidepressiva läkemedel är att du mår
-								bättre och du och din läkare tror att du kommer att stanna bra efter att du slutat ta det.
+								bättre och du och din läkare tror att du kommer att stanna bra efter att du slutat ta
+								det.
 							</p>
-							<p>Om du planerar att sluta med din medicin ska du först tala med din läkare om hur du gör det
-								säkert. Det kan hända att du måste trappa ned långsamt över tiden. Att sluta tvärt med vissa
+							<p>Om du planerar att sluta med din medicin ska du först tala med din läkare om hur du gör
+								det
+								säkert. Det kan hända att du måste trappa ned långsamt över tiden. Att sluta tvärt med
+								vissa
 								läkemedel kan orsaka problem, som influensaliknande symtom och yrsel.</p>
 
 						</div>
@@ -558,26 +137,32 @@
 						<button class="accordion">Hjälper samtalsterapi vid depression?</button>
 						<div class="panel">
 							<p>Att se en terapeut fungerar bra för att hjälpa personer med depression att må bättre.
-								Samtalsterapi kan också hjälpa till att förhindra att din depression kommer tillbaka efter
+								Samtalsterapi kan också hjälpa till att förhindra att din depression kommer tillbaka
+								efter
 								att du har slutat ta din medicin.</p>
-							<p><strong>De typer av terapi som oftast används för att behandla depression är:</strong></p>
+							<p><strong>De typer av terapi som oftast används för att behandla depression är:</strong>
+							</p>
 							<ul>
 
-								<li><strong>Kognitiv beteendeterapi</strong>, en typ av rådgivning som lär dig hur du blir
+								<li><strong>Kognitiv beteendeterapi</strong>, en typ av rådgivning som lär dig hur du
+									blir
 									friskare genom att ändra några av dina tankar och beteendemönster. Du kan få denna
 									terapi en-mot-en med en terapeut eller i en grupp.</li>
 								<li><strong>Interpersonell terapi</strong>, som fokuserar på sociala och personliga
 									relationer och relaterade problem.</li>
-								<li><strong>Problemlösningsterapi</strong>, som fokuserar på de problem du står inför nu och
+								<li><strong>Problemlösningsterapi</strong>, som fokuserar på de problem du står inför nu
+									och
 									hjälper dig att hitta lösningar.</li>
-								<li><strong>Familjeterapi</strong>, en typ av rådgivning som involverar hela familjen.</li>
+								<li><strong>Familjeterapi</strong>, en typ av rådgivning som involverar hela familjen.
+								</li>
 
 							</ul>
 						</div>
 
 						<button class="accordion">Vilka andra saker kan du göra för att behandla depression?</button>
 						<div class="panel">
-							<p>Du kanske vill prova andra sätt att hjälpa till att behandla eller förebygga depression.</p>
+							<p>Du kanske vill prova andra sätt att hjälpa till att behandla eller förebygga depression.
+							</p>
 							<p><strong>Generell hälsa:</strong> Att ta hand om din övergripande hälsa kan hjälpa dig att
 								behandla depression.<br>
 								Du kan:
@@ -591,27 +176,8 @@
 								<li>Söka stöd från vänner och familj.</li>
 
 							</ul>
-
 						</div>
-
 					</div>
-
-					<script>
-						var acc = document.getElementsByClassName("accordion");
-						var i;
-
-						for (i = 0; i < acc.length; i++) {
-							acc[i].addEventListener("click", function () {
-								this.classList.toggle("active");
-								var panel = this.nextElementSibling;
-								if (panel.style.display === "block") {
-									panel.style.display = "none";
-								} else {
-									panel.style.display = "block";
-								}
-							});
-						}
-					</script>
 				</div>
 			</div>
 			<div id="p2" style="display: none">
@@ -629,17 +195,20 @@
 						<div style="background-color:#eee"><strong>Vad är vanligtvis involverat?</strong></div>
 						<div>
 							<ul>
-								<li>Du och din läkare håller med om att du mår bra och kommer att hålla dig bra om du slutar
+								<li>Du och din läkare håller med om att du mår bra och kommer att hålla dig bra om du
+									slutar
 									ta medicinen.</li>
 								<li>Under din läkares vård minskar du långsamt din dos av medicin tills du slutar.</li>
-								<li>Du kan ha samtalsterapi för att hjälpa dig att hantera problem och hjälpa till att ändra
+								<li>Du kan ha samtalsterapi för att hjälpa dig att hantera problem och hjälpa till att
+									ändra
 									hur du tänker och känner.</li>
 							</ul>
 						</div>
 						<div>
 							<ul>
 								<li>Du fortsätter att ta din medicin som din läkare rekommenderar.</li>
-								<li>Du kan ha råd till att hjälpa dig att hantera problem och hjälpa dig att ändra hur du
+								<li>Du kan ha råd till att hjälpa dig att hantera problem och hjälpa dig att ändra hur
+									du
 									tänker och känner</li>
 								<li>Du kan göra en plan om att sluta ta läkemedlet när du och din läkare tror att du är
 									redo.</li>
@@ -671,7 +240,8 @@
 						</div>
 						<div>
 							<ul>
-								<li>Antidepressiva kan ha biverkningar, som kan innefatta huvudvärk, muntorrhet, illamående
+								<li>Antidepressiva kan ha biverkningar, som kan innefatta huvudvärk, muntorrhet,
+									illamående
 									eller problem med sexlust eller förmåga.</li>
 								<li>Läkemedlet kan kosta mycket.</li>
 							</ul>
@@ -688,7 +258,8 @@
 				</div>
 				<div class="maincontainer">
 					<div>
-						<p>Dina personliga känslor är lika viktiga som medicinskt fakta. Tänk på vad som är viktigast för dig i
+						<p>Dina personliga känslor är lika viktiga som medicinskt fakta. Tänk på vad som är viktigast
+							för dig i
 							detta beslut, och visa hur du känner till följande påståenden.</p>
 					</div>
 					<div class="containertoptextSlide">
@@ -721,8 +292,10 @@
 							<div class="ejvald" name="val1L" style="background-image: url(button-left.png)"
 								onClick="javascript:toggleSelection(this)"></div>
 							<div class="grid-middle">
-								<div class="ejvald leftmiddle" name="val0L" onClick="javascript:toggleSelection(this)"></div>
-								<div class="ejvald rightmiddle" name="val0R" onClick="javascript:toggleSelection(this)"></div>
+								<div class="ejvald leftmiddle" name="val0L" onClick="javascript:toggleSelection(this)">
+								</div>
+								<div class="ejvald rightmiddle" name="val0R" onClick="javascript:toggleSelection(this)">
+								</div>
 							</div>
 							<div class="ejvald" name="val1R" style="background-image: url(button-right.png)"
 								onClick="javascript:toggleSelection(this)"></div>
@@ -755,7 +328,8 @@
 				</div>
 				<div class="maincontainer">
 					<div>
-						<p>Nu när du har tänkt på fakta och dina känslor kan du ha en allmän uppfattning om var du står på detta
+						<p>Nu när du har tänkt på fakta och dina känslor kan du ha en allmän uppfattning om var du står
+							på detta
 							beslut. Visa vilket sätt du lutar just nu.</p>
 					</div>
 
@@ -779,8 +353,10 @@
 							<div class="ejvald" name="val1L" style="background-image: url(button-left.png)"
 								onClick="javascript:toggleSelection(this)"></div>
 							<div class="grid-middle">
-								<div class="ejvald leftmiddle" name="val0L" onClick="javascript:toggleSelection(this)"></div>
-								<div class="ejvald rightmiddle" name="val0R" onClick="javascript:toggleSelection(this)"></div>
+								<div class="ejvald leftmiddle" name="val0L" onClick="javascript:toggleSelection(this)">
+								</div>
+								<div class="ejvald rightmiddle" name="val0R" onClick="javascript:toggleSelection(this)">
+								</div>
 							</div>
 							<div class="ejvald" name="val1R" style="background-image: url(button-right.png)"
 								onClick="javascript:toggleSelection(this)"></div>
@@ -895,9 +471,7 @@
 	<div id="p6" style="display: none">
 		Fyll med summerings utseende.
 	</div>
-	</div>
-	</div>
-	</div>
 </body>
+<script>setupAccordionEventListener();</script>
 
 </html>
