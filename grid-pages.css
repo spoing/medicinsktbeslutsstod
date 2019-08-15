@@ -60,7 +60,7 @@
 */
 
 .maincontainer {
-    border: solid 1px #343434;
+    border: solid 1px #c4c4c4;
     padding: 10px;
 }
 
@@ -263,7 +263,7 @@ button.accordion.active::after {
     background-color: #ccc;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid rgb(24, 24, 24);
+    border: 1px solid rgb(126, 126, 126);
     padding: 20px 0;
 }
 
@@ -278,6 +278,10 @@ button.accordion.active::after {
     background-image: url(button-middle-right.png);
     background-position: left;
 }
+
+hr {
+    border: 1px solid #e0e0e0;
+  }
 
 /*
     Slide end css
