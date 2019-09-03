@@ -88,6 +88,14 @@
     background-color: #eee;
 }
 
+.footer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: #343434;
+    padding: 10px 20px 10px 20px;
+    color:white;
+
+}
 /*
     Page 1 accordion css
 */
