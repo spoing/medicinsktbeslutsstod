@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="html">
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="setAktivSida(document.getElementById('1-info'), 'p1')">
+<body onload="setActivePage(document.getElementById('1-info'), 'p1')">
 	<div class="containermain">
 		<div class="introtext">
 			<h1>Depression: Ska jag sluta ta mitt antidepressiva medel?</h1>
@@ -20,7 +20,7 @@
 				kan
 				prata om dem med din läkare.</p>
 		</div>
-		<!--
+<!--
 ███████╗██╗     ██╗██╗  ██╗ █████╗ ██████╗     ███████╗████████╗ █████╗ ██████╗ ████████╗
 ██╔════╝██║     ██║██║ ██╔╝██╔══██╗██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝
 █████╗  ██║     ██║█████╔╝ ███████║██████╔╝    ███████╗   ██║   ███████║██████╔╝   ██║   
@@ -31,33 +31,33 @@
 -->
 		<div class="container">
 			<div class="grid-container">
-				<div id="1-info" onclick="setAktivSida(this, 'p1')">
+				<div id="1-info" onclick="setActivePage(this, 'p1')">
 					<h3>1</h3>
 					<p><strong>Skaffa fakta</strong></p>
 				</div>
-				<div id="2-jamfor" onclick="setAktivSida(this, 'p2')">
+				<div id="2-jamfor" onclick="setActivePage(this, 'p2')">
 					<h3>2</h3>
 					<p><strong>Jämför alternativ</strong></p>
 				</div>
-				<div id="3-kansla" onclick="setAktivSida(this, 'p3')">
+				<div id="3-kansla" onclick="setActivePage(this, 'p3')">
 					<h3>3</h3>
 					<p><strong>Din känslor</strong></p>
 				</div>
-				<div id="4-dittval" onclick="setAktivSida(this, 'p4')">
+				<div id="4-dittval" onclick="setActivePage(this, 'p4')">
 					<h3>4</h3>
 					<p><strong>Ditt beslut</strong></p>
 				</div>
-				<div id="5-quiz" onclick="setAktivSida(this, 'p5')">
+				<div id="5-quiz" onclick="setActivePage(this, 'p5')">
 					<h3>5</h3>
 					<p><strong>Fråga dig själv</strong></p>
 				</div>
-				<div id="6-summary" onclick="setAktivSida(this, 'p6')">
+				<div id="6-summary" onclick="setActivePage(this, 'p6')">
 					<h3>6</h3>
 					<p><strong>Dina svar</strong></p>
 				</div>
 			</div>
 		</div>
-		<!--
+<!--
 ███████╗██╗     ██╗██╗  ██╗     ██╗
 ██╔════╝██║     ██║██║ ██╔╝    ███║
 █████╗  ██║     ██║█████╔╝     ╚██║
@@ -809,142 +809,153 @@
 			</div>
 		</div>
 	</div>
-	<!--
+
+<!--
 ███████╗██╗     ██╗██╗  ██╗     ██████╗ 
 ██╔════╝██║     ██║██║ ██╔╝    ██╔════╝ 
 █████╗  ██║     ██║█████╔╝     ███████╗ 
 ██╔══╝  ██║     ██║██╔═██╗     ██╔═══██╗
 ██║     ███████╗██║██║  ██╗    ╚██████╔╝
-╚═╝     ╚══════╝╚═╝╚═╝  ╚═╝     ╚═════╝ 
-                                        
+╚═╝     ╚══════╝╚═╝╚═╝  ╚═╝     ╚═════╝                                     
 -->
 	<div id="p6" style="display: none">
-			<div class="headerp">
-				<h2>Din sammanfattning av det du svarat på.</h2>
+		<div class="headerp">
+			<h2>Din sammanfattning av det du svarat på.</h2>
+		</div>
+		<div class="accordioncontainer">
+			<p>Här är en lista på dina svar. Du kan använda den för att tala med din läkare eller nära och kära om ditt
+				beslut.</p>
+			<button class="accordion">Ditt beslut</button>
+			<div class="panel">
+				<h3>Dina nästa steg (Svar från flik 5)</h3>
+				<div id="quiz1a">"Du har ej fyllt i" i bold</div>
+				<div id="quiz1b"></div>
+				<div id="quiz1c"></div>
+				<h3>Vart lutar det åt för dig? (Svar från flik 4)</h3>
+				<div id="fraga1-flik4">"Du har ej fyllt i" i bold</div>
+				<h3>Hur säker känner du dig just nu om ditt beslut? (Svar från flik 5)</h3>
+				<div id="fraga1-flik5"></div>
+				<h3>Dina kommentarer (Svar från flik 5)</h3>
+				<div id="quiz1d"></div>
+	
 			</div>
-			<div class="accordioncontainer">
-					<p>Här är en lista på dina svar. Du kan använda den för att tala med din läkare eller nära och kära om ditt beslut.</p>
-					<button class="accordion">Ditt beslut</button>
-					<div class="panel">
-						<h3>Dina nästa steg (Svar från flik 5)</h3>
-						<div id="quiz1a">"Du har ej fyllt i" i bold</div>
-						<div id="quiz1b"></div>
-						<div id="quiz1c"></div>
-						<h3>Vart lutar det åt för dig? (Svar från flik 4)</h3>
-						<div id="fraga1-flik4">"Du har ej fyllt i" i bold</div>
-						<h3>Hur säker känner du dig just nu om ditt beslut? (Svar från flik 5)</h3>
-						<div id="fraga1-flik5"></div>
-						<h3>Dina kommentarer (Svar från flik 5)</h3>
-						<div id="quiz1d"></div>
-
-					</div>
-		
-					<button class="accordion">Redo att agera</button>
-					<div class="panel">
-						<h2>Patientval</h2>
-						(Detta är svaren från <strong>flik 5</strong>)
-						<p>Förstår du vilka alternativ som är tillgängliga för dig?</p>
-						<div id="quiz1a"></div>
-						<div id="quiz1b"></div>
-						<p>Är du klar över vilka fördelar och biverkningar som betyder mest för dig?</p>
-						<div id="quiz1a"></div>
-						<div id="quiz1b"></div>
-						<p>Har du tillräckligt med stöd och råd från andra att göra ett val?</p>
-						<div id="quiz1a"></div>
-						<div id="quiz1b"></div>
-		
-					</div>
-		
-					<button class="accordion">Det som är viktigt för dig</button>
-					<div class="panel">		
-						<p>(Här kommer svaren från <strong>flik 3</strong> att synas)</p>
-						<div class="containertoptextSlide">
-								<div class="grid-toptextSlide">
-									<div><h3><strong>Skäl att sluta ta ditt antidepressiva medel</strong></h3></div>
-									<div></div>
-									<div></div>
-									<div></div>
-									<div align="right"><h3><strong>Skäl att fortsätta ta det</strong></h3></div>
-								</div>
-							</div>
-							<div class="containerslidetext">
-									<div class="grid-topslidetext">
-										<div>Jag mår mycket bättre.</div>
-										<div></div>
-										<div></div>
-										<div align="right">Jag mår inte så bra som jag skulle vilja.</div>
-									</div>
-								</div>
-						<div id="fraga1-flik3">slide1</div>
-						<div class="containerslidetext">
-								<div class="grid-topslidetext">
-									<div>Jag känner mig säker på att jag kan fortsätta att det räcker med samtalsterapi och egenvård.</div>
-									<div></div>
-									<div></div>
-									<div align="right">För att fortsätta att må bra behöver jag mer hjälp än samtalsterapi och egenvård kan ge mig.</div>
-								</div>
-							</div>
-						<div id="fraga2-flik3">slide2</div>
-						<div class="containerslidetext">
-								<div class="grid-topslidetext">
-									<div>Jag kan inte stå emot biverkningarna av min medicin längre.</div>
-									<div></div>
-									<div></div>
-									<div align="right">Jag kan hantera biverkningarna.</div>
-								</div>
-							</div>
-						<div id="fraga3-flik3">slide3</div>
-						<div class="containerslidetext">
-								<div class="grid-topslidetext">
-									<div>Jag vill bara inte ta medicin.</div>
-									<div></div>
-									<div></div>
-									<div align="right">Jag har inget emot att ta medicin.</div>
-								</div>
-							</div>
-						<div id="fraga4-flik3">slide4</div>
-						<div class="containerslidetext">
-								<div class="grid-topslidetext">
-									<div>Jag vill försöka kompletterande medicin.</div>
-									<div></div>
-									<div></div>
-									<div align="right">Jag vill fortsätta att ta receptbelagda läkemedel.</div>
-								</div>
-							</div>
-						<div id="fraga5-flik3">slide5</div>
-						<div class="grid-topslidetext">
-								<div>Mina andra viktiga skäl:<p></p>
-									<div id="egetsvar2-flik3"></div>
-								</div>
-								<div></div>
-								<div></div>
-								<div align="right">Mina andra viktiga skäl:<p></p>
-									<div id="egetsvar2-flik3"></div>
-								</div>
-							</div>
-							<div id="fraga6-flik3">slide6</div>
+	
+			<button class="accordion">Redo att agera</button>
+			<div class="panel">
+				<h2>Patientval</h2>
+				(Detta är svaren från <strong>flik 5</strong>)
+				<p>Förstår du vilka alternativ som är tillgängliga för dig?</p>
+				<div id="quiz1a"></div>
+				<div id="quiz1b"></div>
+				<p>Är du klar över vilka fördelar och biverkningar som betyder mest för dig?</p>
+				<div id="quiz1a"></div>
+				<div id="quiz1b"></div>
+				<p>Har du tillräckligt med stöd och råd från andra att göra ett val?</p>
+				<div id="quiz1a"></div>
+				<div id="quiz1b"></div>
+	
+			</div>
+	
+			<button class="accordion">Det som är viktigt för dig</button>
+			<div class="panel">
+				<p>(Här kommer svaren från <strong>flik 3</strong> att synas)</p>
+				<div class="containertoptextSlide">
+					<div class="grid-toptextSlide">
+						<div>
+							<h3><strong>Skäl att sluta ta ditt antidepressiva medel</strong></h3>
 						</div>
-					
-					</div>
-					<div class="footer">
-						<div><h3><strong>Backa tillbaka</strong></h3></div>
 						<div></div>
 						<div></div>
 						<div></div>
-						<div align="right"><h3><strong>Skriv ut</strong></h3></div>
+						<div align="right">
+							<h3><strong>Skäl att fortsätta ta det</strong></h3>
+						</div>
 					</div>
 				</div>
-				
-		
-					<!--<button class="accordion">Vilka andra saker kan du göra för att behandla depression?</button>
-					<div class="panel">
-						<p>Svar</p>
-					</div>-->
-
-					
+				<div class="containerslidetext">
+					<div class="grid-topslidetext">
+						<div>Jag mår mycket bättre.</div>
+						<div></div>
+						<div></div>
+						<div align="right">Jag mår inte så bra som jag skulle vilja.</div>
+					</div>
 				</div>
+				<div id="fraga1-flik3">slide1</div>
+				<div class="containerslidetext">
+					<div class="grid-topslidetext">
+						<div>Jag känner mig säker på att jag kan fortsätta att det räcker med samtalsterapi och egenvård.
+						</div>
+						<div></div>
+						<div></div>
+						<div align="right">För att fortsätta att må bra behöver jag mer hjälp än samtalsterapi och egenvård
+							kan ge mig.</div>
+					</div>
+				</div>
+				<div id="fraga2-flik3">slide2</div>
+				<div class="containerslidetext">
+					<div class="grid-topslidetext">
+						<div>Jag kan inte stå emot biverkningarna av min medicin längre.</div>
+						<div></div>
+						<div></div>
+						<div align="right">Jag kan hantera biverkningarna.</div>
+					</div>
+				</div>
+				<div id="fraga3-flik3">slide3</div>
+				<div class="containerslidetext">
+					<div class="grid-topslidetext">
+						<div>Jag vill bara inte ta medicin.</div>
+						<div></div>
+						<div></div>
+						<div align="right">Jag har inget emot att ta medicin.</div>
+					</div>
+				</div>
+				<div id="fraga4-flik3">slide4</div>
+				<div class="containerslidetext">
+					<div class="grid-topslidetext">
+						<div>Jag vill försöka kompletterande medicin.</div>
+						<div></div>
+						<div></div>
+						<div align="right">Jag vill fortsätta att ta receptbelagda läkemedel.</div>
+					</div>
+				</div>
+				<div id="fraga5-flik3">slide5</div>
+				<div class="grid-topslidetext">
+					<div>Mina andra viktiga skäl:<p></p>
+						<div id="egetsvar2-flik3"></div>
+					</div>
+					<div></div>
+					<div></div>
+					<div align="right">Mina andra viktiga skäl:<p></p>
+						<div id="egetsvar2-flik3"></div>
+					</div>
+				</div>
+				<div id="fraga6-flik3">slide6</div>
+			</div>
+	
+		</div>
+		<div class="footer">
+			<div>
+				<h3><strong>Backa tillbaka</strong></h3>
+			</div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div align="right">
+				<h3><strong>Skriv ut</strong></h3>
 			</div>
 		</div>
+	</div>
+	
+	
+	<!--<button class="accordion">Vilka andra saker kan du göra för att behandla depression?</button>
+						<div class="panel">
+							<p>Svar</p>
+						</div>-->
+	
+	
+	</div>
+	</div>
+	</div>
 	</div>
 	
 </body>

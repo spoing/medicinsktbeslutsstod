@@ -1,3 +1,6 @@
+/**
+ * Hanterar dragspels komponenters läge utvecklad eller ihopdragen
+*/
 function setupAccordionEventListener() {
     var acc = document.getElementsByClassName("accordion");
     var i;
@@ -15,8 +18,13 @@ function setupAccordionEventListener() {
     }
 }
 
-function setAktivSida(klickatElement, elementId) {
-    const menyElementLista = [
+/**
+ * Hanterar vilken sida som är aktiv baserat på vilken sida som klickats på
+ * @param {*} clickedElement Det sidelement som klickats på
+ * @param {*} elementId Sidelementets id
+ */
+function setActivePage(clickedElement, elementId) {
+    const menuElementList = [
         document.getElementById("1-info"),
         document.getElementById("2-jamfor"),
         document.getElementById("3-kansla"),
@@ -25,7 +33,7 @@ function setAktivSida(klickatElement, elementId) {
         document.getElementById("6-summary")
     ];
 
-    const sidElementLista = [
+    const pageElementList = [
         document.getElementById("p1"),
         document.getElementById("p2"),
         document.getElementById("p3"),
@@ -40,19 +48,19 @@ function setAktivSida(klickatElement, elementId) {
     // 	p6.innerHTML = "<br><br><div class='grid-containerSlide'>" + fraga1.innerHTML + "</div>";
     // }
 
-    // Visa vilket menyval som är aktivt
-    menyElementLista.forEach((menyval) => {
-        if (menyval.id === klickatElement.id) {
-            klickatElement.style.backgroundColor = "#343434";
-            klickatElement.style.color = "#ffffff";
+    // Visa vilket menuChoice som är aktivt
+    menuElementList.forEach((menuChoice) => {
+        if (menuChoice.id === clickedElement.id) {
+            clickedElement.style.backgroundColor = "#343434";
+            clickedElement.style.color = "#ffffff";
         } else {
-            menyval.style.backgroundColor = "#eee";
-            menyval.style.color = "#000000";
+            menuChoice.style.backgroundColor = "#eee";
+            menuChoice.style.color = "#000000";
         }
     });
 
     // Visa sida med innehåll
-    sidElementLista.forEach((page) => {
+    pageElementList.forEach((page) => {
         if (page.id === elementId) {
             page.style.display = "block";
         } else {
@@ -61,28 +69,60 @@ function setAktivSida(klickatElement, elementId) {
     });
 }
 
+/**
+ * Returnerar vilken sida som är aktiv samt sidan innan (vänster) och efter (höger)
+ * om den aktiva sidan.
+ */
+function getActivePage() {
+    const pageElementList = [
+        document.getElementById("p1"),
+        document.getElementById("p2"),
+        document.getElementById("p3"),
+        document.getElementById("p4"),
+        document.getElementById("p5"),
+        document.getElementById("p6")
+    ];
+
+    var pagesPrevCurNext = {prev: '', cur: '', next: ''};
+
+    pageElementList.forEach((page) => {
+        if(page.style.display === "block") {
+            pagesPrevCurNext.prev = pageElementList[pageElementList.indexOf(page) - 1];
+            pagesPrevCurNext.cur = pageElementList[pageElementList.indexOf(page)];
+            pagesPrevCurNext.next = pageElementList[pageElementList.indexOf(page) + 1];
+        }
+    });
+
+    return pagesPrevCurNext;
+}
+
+/**
+ * Hanterar val i en dubbelriktad "slide" avgör vilka sektioner av "slide:en" som ska
+ * vara tända/släckta (vald eller ej vald) 
+ * @param {*} element Elementet för den sektion av "slide:en" som klickats på
+ */
 function toggleSelection(element) {
-    var fraga = element.parentElement;
-    if (fraga.id.match("fraga.*") == null) {
-        fraga = fraga.parentElement;
+    var question = element.parentElement;
+    if (question.id.match("fraga.*") == null) {
+        question = question.parentElement;
     }
 
-    const valLista = [
-        fraga.children[0],
-        fraga.children[1],
-        fraga.children[2],
-        fraga.children[3].children[0],
-        fraga.children[3].children[1],
-        fraga.children[4],
-        fraga.children[5],
-        fraga.children[6]
+    const choiceList = [
+        question.children[0],
+        question.children[1],
+        question.children[2],
+        question.children[3].children[0],
+        question.children[3].children[1],
+        question.children[4],
+        question.children[5],
+        question.children[6]
     ];
 
     // Kollar att vi har klickat på någon av knapparna i mitten
     if (element.attributes.name.value === 'val0L' || element.attributes.name.value === 'val0R') {
 
         // Går igenom listan med möjliga val och sätter class ejvald på det som inte är klickat på
-        valLista.forEach((val) => {
+        choiceList.forEach((val) => {
 
             // Kollar om där vi är i listan matchar det som vi klickat på (id) och sätter class vald
             // annars (else) sätts class ejvald
@@ -101,7 +141,7 @@ function toggleSelection(element) {
         });
 
     } else if (element.attributes.name.value.match('.*L$') !== null) {
-        valLista.forEach((val) => {
+        choiceList.forEach((val) => {
             if (val.attributes.name.value.match('.*R$') !== null) {
                 if (val.attributes.name.value.match('.*0R$') !== null) {
                     val.className = 'ejvald rightmiddle';
@@ -111,23 +151,23 @@ function toggleSelection(element) {
             }
         });
         if (element.attributes.name.value.match('.*1L$') !== null) {
-            valLista[0].className = 'ejvald';
-            valLista[1].className = 'ejvald';
-            valLista[2].className = 'vald';
-            valLista[3].className = 'vald leftmiddle';
+            choiceList[0].className = 'ejvald';
+            choiceList[1].className = 'ejvald';
+            choiceList[2].className = 'vald';
+            choiceList[3].className = 'vald leftmiddle';
         } else if (element.attributes.name.value.match('.*2L$') !== null) {
-            valLista[0].className = 'ejvald';
-            valLista[1].className = 'vald';
-            valLista[2].className = 'vald';
-            valLista[3].className = 'vald leftmiddle';
+            choiceList[0].className = 'ejvald';
+            choiceList[1].className = 'vald';
+            choiceList[2].className = 'vald';
+            choiceList[3].className = 'vald leftmiddle';
         } else if (element.attributes.name.value.match('.*3L$') !== null) {
-            valLista[0].className = 'vald';
-            valLista[1].className = 'vald';
-            valLista[2].className = 'vald';
-            valLista[3].className = 'vald leftmiddle';
+            choiceList[0].className = 'vald';
+            choiceList[1].className = 'vald';
+            choiceList[2].className = 'vald';
+            choiceList[3].className = 'vald leftmiddle';
         }
     } else if (element.attributes.name.value.match('.*R$') !== null) {
-        valLista.forEach((val) => {
+        choiceList.forEach((val) => {
             if (val.attributes.name.value.match('.*L$') !== null) {
                 if (val.attributes.name.value.match('.*0L$') !== null) {
                     val.className = 'ejvald leftmiddle';
@@ -137,43 +177,48 @@ function toggleSelection(element) {
             }
         });
         if (element.attributes.name.value.match('.*1R$') !== null) {
-            valLista[7].className = 'ejvald';
-            valLista[6].className = 'ejvald';
-            valLista[5].className = 'vald';
-            valLista[4].className = 'vald rightmiddle';
+            choiceList[7].className = 'ejvald';
+            choiceList[6].className = 'ejvald';
+            choiceList[5].className = 'vald';
+            choiceList[4].className = 'vald rightmiddle';
         } else if (element.attributes.name.value.match('.*2R$') !== null) {
-            valLista[7].className = 'ejvald';
-            valLista[6].className = 'vald';
-            valLista[5].className = 'vald';
-            valLista[4].className = 'vald rightmiddle';
+            choiceList[7].className = 'ejvald';
+            choiceList[6].className = 'vald';
+            choiceList[5].className = 'vald';
+            choiceList[4].className = 'vald rightmiddle';
         } else if (element.attributes.name.value.match('.*3R$') !== null) {
-            valLista[7].className = 'vald';
-            valLista[6].className = 'vald';
-            valLista[5].className = 'vald';
-            valLista[4].className = 'vald rightmiddle';
+            choiceList[7].className = 'vald';
+            choiceList[6].className = 'vald';
+            choiceList[5].className = 'vald';
+            choiceList[4].className = 'vald rightmiddle';
         }
     }
 }
 
+/**
+ * Hanterar val i en enkelriktad "slide" avgör vilka sektioner av "slide:en" som ska
+ * vara tända/släckta (vald eller ej vald) 
+ * @param {*} element Elementet för den sektion av "slide:en" som klickats på
+ */
 function toggleSelectionRight(element) {
-    var fraga = element.parentElement;
+    var question = element.parentElement;
 
-    const valLista = [
-        fraga.children[0],
-        fraga.children[1],
-        fraga.children[2],
-        fraga.children[3],
-        fraga.children[4],
-        fraga.children[5],
-        fraga.children[6]
+    const choiceList = [
+        question.children[0],
+        question.children[1],
+        question.children[2],
+        question.children[3],
+        question.children[4],
+        question.children[5],
+        question.children[6]
     ];
 
     if (element.attributes.name.value.match('.*R$') !== null) {
-        var markeraSom = 'vald';
-        valLista.forEach((val) => {
-            val.className = markeraSom;
+        var markAs = 'vald';
+        choiceList.forEach((val) => {
+            val.className = markAs;
             if (val.attributes.name.value === element.attributes.name.value) {
-                markeraSom = 'ejvald';
+                markAs = 'ejvald';
             }
         });
     }
