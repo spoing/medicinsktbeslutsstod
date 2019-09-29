@@ -42,11 +42,30 @@ function setActivePage(clickedElement, elementId) {
         document.getElementById("p6")
     ];
 
-    // if(elementId === 'p6') {
-    // 	const fraga1 = document.getElementById('fraga1');
-    // 	var p6 = document.getElementById('p6');
-    // 	p6.innerHTML = "<br><br><div class='grid-containerSlide'>" + fraga1.innerHTML + "</div>";
-    // }
+    var navNextOrPrint = document.getElementById("navNextOrPrint");
+    var navPrev = document.getElementById("navPrev");
+
+    if (elementId === "p6") {
+        navNextOrPrint.innerHTML = "<div onclick='javascript:window.print();'><h3><strong>Skriv ut sammanfattningen</strong></h3></div>";
+
+        handleCopyOfQuizOfRadioButtonType("quiz1-tab5");
+        handleCopyOfQuizOfRadioButtonType("quiz2-tab5");
+        handleCopyOfQuizOfRadioButtonType("quiz3-tab5");
+        handleCopyOfQuizOfSliderType("quiz4-tab5")
+        handleCopyOfQuizOfTextareaType("quiz6-tab5")
+    } else {
+        var idOfNextMenuElement = menuElementList[menuElementList.indexOf(clickedElement) + 1];
+        var idOfNextPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) + 1];
+        navNextOrPrint.innerHTML = "<div onclick='javascript:setActivePage(document.getElementById(\"" + idOfNextMenuElement.id + "\"), \"" + idOfNextPageElement.id + "\");'><h3><strong>Nästa sida</strong></h3></div>";
+    }
+
+    if (elementId === "p1") {
+        navPrev.innerHTML = "<div style=''><h3><strong></strong></h3></div>";
+    } else {
+        var idOfPreviousMenuElement = menuElementList[menuElementList.indexOf(clickedElement) - 1];
+        var idOfPrevPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) - 1];
+        navPrev.innerHTML = "<div style='cursor: pointer;' onclick='javascript:setActivePage(document.getElementById(\"" + idOfPreviousMenuElement.id + "\"), \"" + idOfPrevPageElement.id + "\");'><h3><strong>Föregående sida</strong></h3></div>";
+    }
 
     // Visa vilket menuChoice som är aktivt
     menuElementList.forEach((menuChoice) => {
@@ -69,6 +88,65 @@ function setActivePage(clickedElement, elementId) {
     });
 }
 
+function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
+    var elementToCopyTo = document.getElementsByName(elementNameToCopyTo);
+    var elementToCopyFrom = document.getElementById(elementNameToCopyTo);
+
+    var header = elementToCopyFrom.getElementsByTagName("h2");
+
+    elementToCopyTo[0].innerHTML = header[0].innerHTML;
+
+    var radioButtons = elementToCopyFrom.getElementsByTagName("input");
+
+    var noanswergivenText = "Ej ifylld";
+
+    var showText = noanswergivenText;
+
+    for (let element of radioButtons) {
+        if (element.checked) {
+            showText = element.value;
+            break;
+        }
+    }
+
+    elementToCopyTo[0].innerHTML += " <strong>" + showText + "</strong>";
+}
+
+function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
+    var elementToCopyTo = document.getElementsByName(elementNameToCopyTo);
+    var elementToCopyFrom = document.getElementById(elementNameToCopyTo);
+
+    var cloneOfElement = elementToCopyFrom.cloneNode(true);
+
+    cloneOfElement.id = "cloneOf" + cloneOfElement.id;
+
+    for (let element of cloneOfElement.children) {
+        element.onclick = "";
+    }
+
+    if (elementToCopyTo[0].children.length === 0) {
+        elementToCopyTo[0].appendChild(cloneOfElement);
+    } else {
+        elementToCopyTo[0].replaceChild(cloneOfElement, elementToCopyTo[0].children[0]);
+    }
+
+}
+
+function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
+    var elementToCopyTo = document.getElementsByName(elementNameToCopyTo);
+    var elementToCopyFrom = document.getElementById(elementNameToCopyTo);
+
+    var textarea = elementToCopyFrom.getElementsByTagName("textarea");
+
+    var noanswergivenText = "Ej ifylld";
+
+    if (textarea[0].value.length > 0) {
+        elementToCopyTo[0].innerText = textarea[0].value;
+    } else {
+        elementToCopyTo[0].innerText = noanswergivenText;
+    }
+}
+
 /**
  * Returnerar vilken sida som är aktiv samt sidan innan (vänster) och efter (höger)
  * om den aktiva sidan.
@@ -83,10 +161,10 @@ function getActivePage() {
         document.getElementById("p6")
     ];
 
-    var pagesPrevCurNext = {prev: '', cur: '', next: ''};
+    var pagesPrevCurNext = { prev: '', cur: '', next: '' };
 
     pageElementList.forEach((page) => {
-        if(page.style.display === "block") {
+        if (page.style.display === "block") {
             pagesPrevCurNext.prev = pageElementList[pageElementList.indexOf(page) - 1];
             pagesPrevCurNext.cur = pageElementList[pageElementList.indexOf(page)];
             pagesPrevCurNext.next = pageElementList[pageElementList.indexOf(page) + 1];
