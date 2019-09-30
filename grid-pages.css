@@ -1,3 +1,15 @@
+.for-print {
+    display: none;
+}
+@media print {
+   .containermain {
+       display: none;
+    }
+    .for-print {
+       display: block;
+    }
+}
+
 * {
     box-sizing: border-box;
 }

@@ -1,3 +1,6 @@
+var noanswergivenText = "Ej ifylld";
+var printView;
+
 /**
  * Hanterar dragspels komponenters läge utvecklad eller ihopdragen
 */
@@ -44,15 +47,31 @@ function setActivePage(clickedElement, elementId) {
 
     var navNextOrPrint = document.getElementById("navNextOrPrint");
     var navPrev = document.getElementById("navPrev");
+    printView = document.getElementById("onlyprint");
 
     if (elementId === "p6") {
         navNextOrPrint.innerHTML = "<div onclick='javascript:window.print();'><h3><strong>Skriv ut sammanfattningen</strong></h3></div>";
 
+        // Fyll första delen av sammanfattningsdragspelet
+        handleCopyOfQuizOfRadioButtonType("quiz5-tab5");
+        handleCopyOfQuizOfSliderType("quiz1-tab4");
+        handleCopyOfQuizOfSliderType("quiz4-tab5");
+        handleCopyOfQuizOfTextareaType("quiz6-tab5");
+
+        // Fyll andra delen av sammanfattningsdragspelet
         handleCopyOfQuizOfRadioButtonType("quiz1-tab5");
         handleCopyOfQuizOfRadioButtonType("quiz2-tab5");
         handleCopyOfQuizOfRadioButtonType("quiz3-tab5");
-        handleCopyOfQuizOfSliderType("quiz4-tab5")
-        handleCopyOfQuizOfTextareaType("quiz6-tab5")
+
+        // Fyll tredje delen av sammanfattningsdragspelet
+        handleCopyOfQuizOfSliderType("quiz1-tab3");
+        handleCopyOfQuizOfSliderType("quiz2-tab3");
+        handleCopyOfQuizOfSliderType("quiz3-tab3");
+        handleCopyOfQuizOfSliderType("quiz4-tab3");
+        handleCopyOfQuizOfSliderType("quiz5-tab3");
+        handleCopyOfQuizOfTextareaType("quiz6-tab3");
+        handleCopyOfQuizOfTextareaType("quiz7-tab3");
+        handleCopyOfQuizOfSliderType("quiz8-tab3");
     } else {
         var idOfNextMenuElement = menuElementList[menuElementList.indexOf(clickedElement) + 1];
         var idOfNextPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) + 1];
@@ -98,8 +117,6 @@ function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
 
     var radioButtons = elementToCopyFrom.getElementsByTagName("input");
 
-    var noanswergivenText = "Ej ifylld";
-
     var showText = noanswergivenText;
 
     for (let element of radioButtons) {
@@ -110,9 +127,11 @@ function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
     }
 
     elementToCopyTo[0].innerHTML += " <strong>" + showText + "</strong>";
+    printView.appendChild(elementToCopyTo[0])
 }
 
 function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
+    var showNoAnswerGiven = true;
     var elementToCopyTo = document.getElementsByName(elementNameToCopyTo);
     var elementToCopyFrom = document.getElementById(elementNameToCopyTo);
 
@@ -122,14 +141,29 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
 
     for (let element of cloneOfElement.children) {
         element.onclick = "";
+        if(element.attributes.name === undefined) {
+            for (let childElement of element.children) {
+                childElement.onclick = "";
+                if(childElement.className.match("^vald .*")) {
+                    showNoAnswerGiven = false;
+                }
+            }
+        }
+        if(element.className === 'vald') {
+            showNoAnswerGiven = false;
+        }
     }
 
-    if (elementToCopyTo[0].children.length === 0) {
-        elementToCopyTo[0].appendChild(cloneOfElement);
+    if(showNoAnswerGiven) {
+        elementToCopyTo[0].innerText = noanswergivenText;
     } else {
-        elementToCopyTo[0].replaceChild(cloneOfElement, elementToCopyTo[0].children[0]);
+        if (elementToCopyTo[0].children.length === 0) {
+            elementToCopyTo[0].appendChild(cloneOfElement);
+        } else {
+            elementToCopyTo[0].replaceChild(cloneOfElement, elementToCopyTo[0].children[0]);
+        }
     }
-
+    printView.appendChild(cloneOfElement);
 }
 
 function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
@@ -138,13 +172,12 @@ function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
 
     var textarea = elementToCopyFrom.getElementsByTagName("textarea");
 
-    var noanswergivenText = "Ej ifylld";
-
     if (textarea[0].value.length > 0) {
         elementToCopyTo[0].innerText = textarea[0].value;
     } else {
         elementToCopyTo[0].innerText = noanswergivenText;
     }
+    printView.appendChild(elementToCopyTo[0])
 }
 
 /**
@@ -181,7 +214,7 @@ function getActivePage() {
  */
 function toggleSelection(element) {
     var question = element.parentElement;
-    if (question.id.match("fraga.*") == null) {
+    if (question.id.match("quiz.*") == null) {
         question = question.parentElement;
     }
 
