@@ -48,6 +48,7 @@ function setActivePage(clickedElement, elementId) {
     var navNextOrPrint = document.getElementById("navNextOrPrint");
     var navPrev = document.getElementById("navPrev");
     printView = document.getElementById("onlyprint");
+    printView.innerHTML = "";
 
     if (elementId === "p6") {
         navNextOrPrint.innerHTML = "<div onclick='javascript:window.print();'><h3><strong>Skriv ut sammanfattningen</strong></h3></div>";
@@ -127,7 +128,9 @@ function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
     }
 
     elementToCopyTo[0].innerHTML += " <strong>" + showText + "</strong>";
-    printView.appendChild(elementToCopyTo[0])
+    let forPrint = elementToCopyTo[0].cloneNode(true);
+    forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    printView.appendChild(forPrint);
 }
 
 function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
@@ -163,7 +166,9 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
             elementToCopyTo[0].replaceChild(cloneOfElement, elementToCopyTo[0].children[0]);
         }
     }
-    printView.appendChild(cloneOfElement);
+    let forPrint = elementToCopyTo[0].cloneNode(true);
+    forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    printView.appendChild(forPrint);
 }
 
 function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
@@ -177,7 +182,9 @@ function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
     } else {
         elementToCopyTo[0].innerText = noanswergivenText;
     }
-    printView.appendChild(elementToCopyTo[0])
+    let forPrint = elementToCopyTo[0].cloneNode(true);
+    forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    printView.appendChild(forPrint);
 }
 
 /**
