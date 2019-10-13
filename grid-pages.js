@@ -76,7 +76,7 @@ function setActivePage(clickedElement, elementId) {
     } else {
         var idOfNextMenuElement = menuElementList[menuElementList.indexOf(clickedElement) + 1];
         var idOfNextPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) + 1];
-        navNextOrPrint.innerHTML = "<div onclick='javascript:setActivePage(document.getElementById(\"" + idOfNextMenuElement.id + "\"), \"" + idOfNextPageElement.id + "\");'><h3><strong>Nästa sida</strong></h3></div>";
+        navNextOrPrint.innerHTML = "<div style='cursor: pointer;' onclick='javascript:setActivePage(document.getElementById(\"" + idOfNextMenuElement.id + "\"), \"" + idOfNextPageElement.id + "\");'><h3><strong>Nästa sida</strong></h3></div>";
     }
 
     if (elementId === "p1") {
@@ -143,21 +143,21 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
     cloneOfElement.id = "cloneOf" + cloneOfElement.id;
 
     for (let element of cloneOfElement.children) {
-        element.onclick = "";
-        if(element.attributes.name === undefined) {
+        element.removeAttribute('onclick');
+        if (element.attributes.name === undefined) {
             for (let childElement of element.children) {
-                childElement.onclick = "";
-                if(childElement.className.match("^vald .*")) {
+                childElement.removeAttribute('onclick');
+                if (childElement.className.match("^vald .*")) {
                     showNoAnswerGiven = false;
                 }
             }
         }
-        if(element.className === 'vald') {
+        if (element.className === 'vald') {
             showNoAnswerGiven = false;
         }
     }
 
-    if(showNoAnswerGiven) {
+    if (showNoAnswerGiven) {
         elementToCopyTo[0].innerText = noanswergivenText;
     } else {
         if (elementToCopyTo[0].children.length === 0) {
@@ -166,8 +166,33 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
             elementToCopyTo[0].replaceChild(cloneOfElement, elementToCopyTo[0].children[0]);
         }
     }
-    let forPrint = elementToCopyTo[0].cloneNode(true);
+
+    /* Anpassa styles för utskrift */
+    let forPrint = elementToCopyFrom.cloneNode(true);
     forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+
+    for (let element of forPrint.children) {
+        element.removeAttribute('onclick');
+        if (element.attributes.name === undefined) {
+            for (let childElement of element.children) {
+                childElement.removeAttribute('onclick');
+                if (childElement.className.match("^vald .*")) {
+                    childElement.removeAttribute('style');
+                    childElement.attributes.className = "for-print-vald";
+                } else {
+                    childElement.removeAttribute('style');
+                    childElement.className = "for-print-ejvald";
+                }
+            }
+        }
+        if (element.className === 'vald') {
+            element.removeAttribute('style');
+            element.attributes.className = "for-print-vald";
+        } else {
+            element.removeAttribute('style');
+            element.attributes.className = "for-print-ejvald";
+        }
+    }
     printView.appendChild(forPrint);
 }
 

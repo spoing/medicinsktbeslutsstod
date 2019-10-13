@@ -5,13 +5,34 @@
    .containermain {
        display: none;
     }
+    .testa {
+        border: 1px;
+        background-color: black;
+    }
     .for-print {
        display: block;
+       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
+    .for-print-vald {
+        background-color: #444;
+    }
+    .for-print-ejvald {
+        background-color: crimson;
+    }
+}
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignRight {
+    text-align: right;
 }
 
 * {
     box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;                 /*Firefox*/
 }
 
 @media screen and (min-width: 601px) {
