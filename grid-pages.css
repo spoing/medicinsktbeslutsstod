@@ -35,7 +35,7 @@
     color-adjust: exact !important;                 /*Firefox*/
 }
 
-@media screen and (min-width: 601px) {
+/*@media screen and (min-width: 601px) {
     div.grid-container {
         font-size: 20px;
     }
@@ -45,7 +45,7 @@
     div.grid-container {
         font-size: 13px;
     }
-}
+}*/
 
 .containermain {
     width: 100%;
@@ -196,7 +196,22 @@ button.accordion.active::after {
     Page 2 css
 */
 
-.grid-containerpage2 {
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+
+/*.grid-containerpage2 {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 0px;
@@ -206,7 +221,7 @@ button.accordion.active::after {
     border: 1px solid #b3b3b3;
     text-align: left;
     padding: 10px;
-}
+}*/
 
 /*
     Pages css end
