@@ -35,7 +35,7 @@
     color-adjust: exact !important;                 /*Firefox*/
 }
 
-/*@media screen and (min-width: 601px) {
+@media screen and (min-width: 601px) {
     div.grid-container {
         font-size: 20px;
     }
@@ -45,7 +45,7 @@
     div.grid-container {
         font-size: 13px;
     }
-}*/
+}
 
 .containermain {
     width: 100%;
@@ -62,15 +62,17 @@
 .container {
     width: auto;
     margin: auto;
+    
 }
 
-.grid-container {
+.grid-container {   
     display: grid;
-    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 17.0%;
     grid-gap: 0px;
-    padding: 40px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     margin-bottom: 0px;
-    background-color: #343434;
+    /*background-color: #94c11f;
+    border-radius: 15px;*/
 }
 
 .grid-container>div {
@@ -78,7 +80,7 @@
     padding: 0px 0;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid #5f5f5f;
+    border: 0.01rem solid #f8ffe6;
     text-align: center;
     cursor: pointer;
 }
@@ -94,24 +96,25 @@
 
 .maincontainer {
     border: solid 1px #c4c4c4;
-    padding: 10px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
 }
 
 .headerp {
-    background-color: #343434;
-    color: #fff;
+    color: #000;
     padding: 5px 10px 5px 20px;
     margin-bottom: 10px;
+    border-radius: 0px 0px 15px 15px;
 }
 
 .headerpages {
     width: auto;
     margin: auto;
-    background-color: #343434;
-    color: #fff;
+    /*background-color: #8b8b8b;*/
+    color: #000;
     padding: 10px;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .containerpages {
@@ -124,9 +127,11 @@
 .footer {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    background-color: #343434;
+    background-color: #8b8b8b8;
     padding: 10px 20px 10px 20px;
-    color:white;
+    color:#000;
+    border-radius: 15px;
+    margin-top:10px;
 
 }
 /*
@@ -241,6 +246,7 @@ table {
     grid-template-columns: auto auto auto auto;
     background-color: #eee;
     padding: 10px 10px 10px 10px;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .grid-topslidetext>div {
@@ -283,6 +289,7 @@ table {
     grid-template-columns: auto auto auto auto auto auto;
     background-color: #eee;
     padding: 10px 10px 10px 10px;
+    border-radius: 0px 0px 15px 15px;
 }
 
 .grid-footerSlide>div {
@@ -299,7 +306,7 @@ table {
 .grid-toptextSlide {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    background-color: #eee;
+    /*background-color: #eee;*/
     padding: 10px 10px 10px 10px;
 }
 
@@ -308,18 +315,20 @@ table {
 }
 
 .vald {
-    background-color: #5f5f5f;
+    background-color: #94c11f;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid rgb(24, 24, 24);
+    border: 1px solid rgb(141, 183, 31);
     padding: 20px 0;
+    /*background: rgb(227,227,227);
+    background: linear-gradient(90deg, rgba(227,227,227,1) 0%, rgba(253,255,255,1) 50%, rgba(227,227,227,1) 100%);*/
 }
 
 .ejvald {
-    background-color: #ccc;
+    background-color: #e2e2e2;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid rgb(126, 126, 126);
+    border: 1px solid rgb(215, 215, 215);
     padding: 20px 0;
 }
 
@@ -339,6 +348,14 @@ hr {
     border: 1px solid #e0e0e0;
   }
 
+  textarea {
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: 100%;
+}
 /*
     Slide end css
 */

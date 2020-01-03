@@ -51,7 +51,7 @@ function setActivePage(clickedElement, elementId) {
     printView.innerHTML = "";
 
     if (elementId === "p6") {
-        navNextOrPrint.innerHTML = "<div onclick='javascript:window.print();'><h3><strong>Skriv ut sammanfattningen</strong></h3></div>";
+        navNextOrPrint.innerHTML = "<div style='cursor: pointer;' onclick='javascript:window.print();'><p><strong>Skriv ut sammanfattningen</strong></p></div>";
 
         // Fyll första delen av sammanfattningsdragspelet
         handleCopyOfQuizOfRadioButtonType("quiz5-tab5");
@@ -76,7 +76,7 @@ function setActivePage(clickedElement, elementId) {
     } else {
         var idOfNextMenuElement = menuElementList[menuElementList.indexOf(clickedElement) + 1];
         var idOfNextPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) + 1];
-        navNextOrPrint.innerHTML = "<div style='cursor: pointer;' onclick='javascript:setActivePage(document.getElementById(\"" + idOfNextMenuElement.id + "\"), \"" + idOfNextPageElement.id + "\");'><h3><strong>Nästa sida</strong></h3></div>";
+        navNextOrPrint.innerHTML = "<div style='cursor: pointer;' onclick='javascript:setActivePage(document.getElementById(\"" + idOfNextMenuElement.id + "\"), \"" + idOfNextPageElement.id + "\");'><p><strong>Nästa sida</strong></p></div>";
     }
 
     if (elementId === "p1") {
@@ -84,13 +84,13 @@ function setActivePage(clickedElement, elementId) {
     } else {
         var idOfPreviousMenuElement = menuElementList[menuElementList.indexOf(clickedElement) - 1];
         var idOfPrevPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) - 1];
-        navPrev.innerHTML = "<div style='cursor: pointer;' onclick='javascript:setActivePage(document.getElementById(\"" + idOfPreviousMenuElement.id + "\"), \"" + idOfPrevPageElement.id + "\");'><h3><strong>Föregående sida</strong></h3></div>";
+        navPrev.innerHTML = "<div style='cursor: pointer;' onclick='javascript:setActivePage(document.getElementById(\"" + idOfPreviousMenuElement.id + "\"), \"" + idOfPrevPageElement.id + "\");'><p><strong>Föregående sida</strong></p></div>";
     }
 
     // Visa vilket menuChoice som är aktivt
     menuElementList.forEach((menuChoice) => {
         if (menuChoice.id === clickedElement.id) {
-            clickedElement.style.backgroundColor = "#343434";
+            clickedElement.style.backgroundColor = "#94c11f";
             clickedElement.style.color = "#ffffff";
         } else {
             menuChoice.style.backgroundColor = "#eee";
