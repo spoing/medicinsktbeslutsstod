@@ -1,23 +1,29 @@
 .for-print {
     display: none;
 }
+
+@page {
+    size: A4;
+    margin: auto;
+}
+
 @media print {
-   .containermain {
-       display: none;
+    .containermain {
+        display: none;
     }
     .testa {
         border: 1px;
         background-color: black;
     }
     .for-print {
-       display: block;
-       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: block;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     .for-print-vald {
         background-color: #444;
     }
     .for-print-ejvald {
-        background-color: crimson;
+        background-color: white;
     }
 }
 
@@ -31,8 +37,10 @@
 
 * {
     box-sizing: border-box;
-    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
-    color-adjust: exact !important;                 /*Firefox*/
+    -webkit-print-color-adjust: exact !important;
+    /* Chrome, Safari */
+    color-adjust: exact !important;
+    /*Firefox*/
 }
 
 @media screen and (min-width: 601px) {
@@ -62,10 +70,9 @@
 .container {
     width: auto;
     margin: auto;
-    
 }
 
-.grid-container {   
+.grid-container {
     display: grid;
     grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 17.0%;
     grid-gap: 0px;
@@ -127,13 +134,31 @@
 .footer {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    background-color: #8b8b8b8;
+    background-color: #8b8b8b;
     padding: 10px 20px 10px 20px;
-    color:#000;
+    color: #000;
     border-radius: 15px;
-    margin-top:10px;
-
+    margin-top: 10px;
 }
+
+/*'
+    Page 6 - Dina svar
+*/
+
+.dinaSvarBorderWithHeader {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 /*
     Page 1 accordion css
 */
@@ -206,15 +231,17 @@ table {
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
-  }
-  
-  th, td {
+}
+
+th, td {
     text-align: left;
     padding: 8px;
     border: 1px solid #ddd;
-  }
-  
-  tr:nth-child(even){background-color: #f2f2f2}
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
 
 /*.grid-containerpage2 {
     display: grid;
@@ -346,16 +373,15 @@ table {
 
 hr {
     border: 1px solid #e0e0e0;
-  }
+}
 
-  textarea {
-
+textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-
     width: 100%;
 }
+
 /*
     Slide end css
 */

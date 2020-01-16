@@ -1,3 +1,5 @@
+'use strict';
+
 var noanswergivenText = "Ej ifylld";
 var printView;
 
@@ -6,8 +8,8 @@ var printView;
 */
 function setupAccordionEventListener() {
     var acc = document.getElementsByClassName("accordion");
+    
     var i;
-
     for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
@@ -55,8 +57,8 @@ function setActivePage(clickedElement, elementId) {
 
         // Fyll första delen av sammanfattningsdragspelet
         handleCopyOfQuizOfRadioButtonType("quiz5-tab5");
-        handleCopyOfQuizOfSliderType("quiz1-tab4");
-        handleCopyOfQuizOfSliderType("quiz4-tab5");
+        handleCopyOfQuizOfSliderType("quiz1-tab4-full");
+        handleCopyOfQuizOfSliderType("quiz4-tab5-full");
         handleCopyOfQuizOfTextareaType("quiz6-tab5");
 
         // Fyll andra delen av sammanfattningsdragspelet
@@ -65,14 +67,14 @@ function setActivePage(clickedElement, elementId) {
         handleCopyOfQuizOfRadioButtonType("quiz3-tab5");
 
         // Fyll tredje delen av sammanfattningsdragspelet
-        handleCopyOfQuizOfSliderType("quiz1-tab3");
-        handleCopyOfQuizOfSliderType("quiz2-tab3");
-        handleCopyOfQuizOfSliderType("quiz3-tab3");
-        handleCopyOfQuizOfSliderType("quiz4-tab3");
-        handleCopyOfQuizOfSliderType("quiz5-tab3");
+        handleCopyOfQuizOfSliderType("quiz1-tab3-full");
+        handleCopyOfQuizOfSliderType("quiz2-tab3-full");
+        handleCopyOfQuizOfSliderType("quiz3-tab3-full");
+        handleCopyOfQuizOfSliderType("quiz4-tab3-full");
+        handleCopyOfQuizOfSliderType("quiz5-tab3-full");
         handleCopyOfQuizOfTextareaType("quiz6-tab3");
         handleCopyOfQuizOfTextareaType("quiz7-tab3");
-        handleCopyOfQuizOfSliderType("quiz8-tab3");
+        handleCopyOfQuizOfSliderType("quiz8-tab3-full");
     } else {
         var idOfNextMenuElement = menuElementList[menuElementList.indexOf(clickedElement) + 1];
         var idOfNextPageElement = pageElementList[pageElementList.indexOf(document.getElementById(elementId)) + 1];
@@ -126,11 +128,12 @@ function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
             break;
         }
     }
-
     elementToCopyTo[0].innerHTML += " <strong>" + showText + "</strong>";
-    let forPrint = elementToCopyTo[0].cloneNode(true);
-    forPrint.id = "onlyPrint" + elementToCopyFrom.id;
-    printView.appendChild(forPrint);
+
+    /* Anpassa styles för utskrift */
+    // let forPrint = elementToCopyTo[0].cloneNode(true);
+    // forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    // printView.appendChild(forPrint);
 }
 
 function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
@@ -142,7 +145,10 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
 
     cloneOfElement.id = "cloneOf" + cloneOfElement.id;
 
-    for (let element of cloneOfElement.children) {
+    var subSliderElement = cloneOfElement.getElementsByClassName("containerSlide")[0].children[0];
+    subSliderElement.id = "cloneOf" + subSliderElement.id;
+    
+    for (let element of subSliderElement.children) {
         element.removeAttribute('onclick');
         if (element.attributes.name === undefined) {
             for (let childElement of element.children) {
@@ -160,6 +166,7 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
     if (showNoAnswerGiven) {
         elementToCopyTo[0].innerText = noanswergivenText;
     } else {
+        elementToCopyTo[0].innerText = '';
         if (elementToCopyTo[0].children.length === 0) {
             elementToCopyTo[0].appendChild(cloneOfElement);
         } else {
@@ -168,32 +175,32 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
     }
 
     /* Anpassa styles för utskrift */
-    let forPrint = elementToCopyFrom.cloneNode(true);
-    forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    // let forPrint = elementToCopyFrom.cloneNode(true);
+    // forPrint.id = "onlyPrint" + elementToCopyFrom.id;
 
-    for (let element of forPrint.children) {
-        element.removeAttribute('onclick');
-        if (element.attributes.name === undefined) {
-            for (let childElement of element.children) {
-                childElement.removeAttribute('onclick');
-                if (childElement.className.match("^vald .*")) {
-                    childElement.removeAttribute('style');
-                    childElement.attributes.className = "for-print-vald";
-                } else {
-                    childElement.removeAttribute('style');
-                    childElement.className = "for-print-ejvald";
-                }
-            }
-        }
-        if (element.className === 'vald') {
-            element.removeAttribute('style');
-            element.attributes.className = "for-print-vald";
-        } else {
-            element.removeAttribute('style');
-            element.attributes.className = "for-print-ejvald";
-        }
-    }
-    printView.appendChild(forPrint);
+    // for (let element of forPrint.children) {
+    //     element.removeAttribute('onclick');
+    //     if (element.attributes.name === undefined) {
+    //         for (let childElement of element.children) {
+    //             childElement.removeAttribute('onclick');
+    //             if (childElement.className.match("^vald .*")) {
+    //                 childElement.removeAttribute('style');
+    //                 childElement.attributes.className = "for-print-vald";
+    //             } else {
+    //                 childElement.removeAttribute('style');
+    //                 childElement.className = "for-print-ejvald";
+    //             }
+    //         }
+    //     }
+    //     if (element.className === 'vald') {
+    //         element.removeAttribute('style');
+    //         element.attributes.className = "for-print-vald";
+    //     } else {
+    //         element.removeAttribute('style');
+    //         element.attributes.className = "for-print-ejvald";
+    //     }
+    // }
+    // printView.appendChild(forPrint);
 }
 
 function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
@@ -207,9 +214,11 @@ function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
     } else {
         elementToCopyTo[0].innerText = noanswergivenText;
     }
-    let forPrint = elementToCopyTo[0].cloneNode(true);
-    forPrint.id = "onlyPrint" + elementToCopyFrom.id;
-    printView.appendChild(forPrint);
+
+    /* Anpassa styles för utskrift */
+    // let forPrint = elementToCopyTo[0].cloneNode(true);
+    // forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    // printView.appendChild(forPrint);
 }
 
 /**
