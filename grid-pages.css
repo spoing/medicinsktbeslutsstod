@@ -35,6 +35,28 @@
     text-align: right;
 }
 
+.slidertextleft {
+    /*margin-left: 47px;*/
+    border-left: 2px lightgray solid;
+    border-top: 2px lightgray solid;
+    border-right: 2px darkgray solid;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 55px;
+}
+
+.slidertextright {
+    text-align: right;
+    border-top: 2px lightgray solid;
+    border-right: 2px lightgray solid;
+    padding-top: 5px;
+    padding-right: 55px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    /*margin-right: 47px;*/
+}
+
 * {
     box-sizing: border-box;
     -webkit-print-color-adjust: exact !important;
@@ -44,13 +66,25 @@
 }
 
 @media screen and (min-width: 601px) {
-    div.grid-container {
+    div.containermain {
+        font-size: 20px;
+    }
+    /*div.grid-container {
+        font-size: 20px;
+    }*/
+    div.containercontent {
         font-size: 20px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    div.grid-container {
+    div.containermain {
+        font-size: 13px;
+    }
+    /*div.grid-container {
+        font-size: 13px;
+    }*/
+    div.containercontent {
         font-size: 13px;
     }
 }
@@ -101,7 +135,7 @@
     Pages css
 */
 
-.maincontainer {
+.containercontent {
     border: solid 1px #c4c4c4;
     padding: 10px 15px 10px 15px;
     border-radius: 15px;
@@ -129,6 +163,7 @@
     margin: auto;
     padding: 25px;
     background-color: #eee;
+    border-radius: 15px 15px 15px;
 }
 
 .footer {
@@ -139,6 +174,13 @@
     color: #000;
     border-radius: 15px;
     margin-top: 10px;
+}
+
+.footerdisclaimer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: smaller;
 }
 
 /*'
@@ -270,7 +312,7 @@ tr:nth-child(even) {
 
 .grid-topslidetext {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 50% 50%;
     background-color: #eee;
     padding: 10px 10px 10px 10px;
     border-radius: 15px 15px 0px 0px;
@@ -289,6 +331,11 @@ tr:nth-child(even) {
 @media screen and (max-width: 600px) {
     div.grid-containerSlide {
         padding: 0;
+        word-wrap: break-word;
+    }
+
+    div.slidertextleft, div.slidertextright {
+        padding: 5px;
         word-wrap: break-word;
     }
 }
@@ -381,6 +428,12 @@ textarea {
     box-sizing: border-box;
     width: 100%;
 }
+
+/*@media screen and (max-width: 1000px) {
+    textarea {
+        width: 150px;
+    }
+}*/
 
 /*
     Slide end css

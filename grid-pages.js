@@ -114,7 +114,7 @@ function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
     var elementToCopyTo = document.getElementsByName(elementNameToCopyTo);
     var elementToCopyFrom = document.getElementById(elementNameToCopyTo);
 
-    var header = elementToCopyFrom.getElementsByTagName("h2");
+    var header = elementToCopyFrom.getElementsByTagName("h3");
 
     elementToCopyTo[0].innerHTML = header[0].innerHTML;
 
