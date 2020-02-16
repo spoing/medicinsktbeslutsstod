@@ -1,4 +1,5 @@
 'use strict';
+/*jshint esversion: 6 */
 
 var noanswergivenText = "Ej ifylld";
 var printView;
@@ -6,7 +7,7 @@ var printView;
 /**
  * Hanterar dragspels komponenters läge utvecklad eller ihopdragen
 */
-function setupAccordionEventListener() {
+/*function setupAccordionEventListener() {
     var acc = document.getElementsByClassName("accordion");
     
     var i;
@@ -20,6 +21,50 @@ function setupAccordionEventListener() {
                 panel.style.display = "block";
             }
         });
+    }
+}*/
+
+/**
+ * Hanterar dragspels komponenters läge utvecklad eller ihopdragen
+*/
+function setupAccordionEventListener() {
+    var acc = document.getElementsByClassName("accordion");
+    
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.className === "panel") {
+                panel.className = "panelShow";
+            } else {
+                panel.className = "panel";
+            }
+        });
+    }
+}
+
+/**
+ * Vid print så expanderas accordion endast för printvyn
+ * Nya CSS klasser sätts på den DIV som har innehållet
+ */
+function expandAccordionOnPrint() {
+    var acc = document.getElementsByClassName("accordion");
+    var rememberPanels = [];
+
+    var i;
+    var panel;
+    for (i = 0; i < acc.length; i++) {
+        panel = acc[i].nextElementSibling;
+        rememberPanels[i] = panel.className;
+        panel.className = 'accordionprintframe';
+    }
+
+    window.print();
+
+    for (i = 0; i < acc.length; i++) {
+        panel = acc[i].nextElementSibling;
+        panel.className = rememberPanels[i];
     }
 }
 
@@ -53,7 +98,7 @@ function setActivePage(clickedElement, elementId) {
     printView.innerHTML = "";
 
     if (elementId === "p6") {
-        navNextOrPrint.innerHTML = "<div style='cursor: pointer;' onclick='javascript:window.print();'><p><strong>Skriv ut sammanfattningen</strong></p></div>";
+        navNextOrPrint.innerHTML = "<div style='cursor: pointer;' onclick='javascript:expandAccordionOnPrint();'><p><strong>Skriv ut sammanfattningen</strong></p></div>";
 
         // Fyll första delen av sammanfattningsdragspelet
         handleCopyOfQuizOfRadioButtonType("quiz5-tab5");
@@ -138,7 +183,7 @@ function handleCopyOfQuizOfRadioButtonType(elementNameToCopyTo) {
 
 function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
     var showNoAnswerGiven = true;
-    var elementToCopyTo = document.getElementsByName(elementNameToCopyTo);
+    var elementToCopyTo = document.getElementsByName(elementNameToCopyTo)[0];
     var elementToCopyFrom = document.getElementById(elementNameToCopyTo);
 
     var cloneOfElement = elementToCopyFrom.cloneNode(true);
@@ -163,44 +208,27 @@ function handleCopyOfQuizOfSliderType(elementNameToCopyTo) {
         }
     }
 
-    if (showNoAnswerGiven) {
-        elementToCopyTo[0].innerText = noanswergivenText;
-    } else {
-        elementToCopyTo[0].innerText = '';
-        if (elementToCopyTo[0].children.length === 0) {
-            elementToCopyTo[0].appendChild(cloneOfElement);
-        } else {
-            elementToCopyTo[0].replaceChild(cloneOfElement, elementToCopyTo[0].children[0]);
-        }
+    elementToCopyTo.innerHTML = '';
+    while (elementToCopyTo.firstChild) {
+        elementToCopyTo.removeChild(elementToCopyTo.firstChild);
     }
 
-    /* Anpassa styles för utskrift */
-    // let forPrint = elementToCopyFrom.cloneNode(true);
-    // forPrint.id = "onlyPrint" + elementToCopyFrom.id;
+    if (showNoAnswerGiven) {
+        var dimNotSelected = document.createElement('DIV');
+        var dimNotSelectedScreen = document.createElement('DIV');
+        var notSelectedText = document.createElement("H1");
 
-    // for (let element of forPrint.children) {
-    //     element.removeAttribute('onclick');
-    //     if (element.attributes.name === undefined) {
-    //         for (let childElement of element.children) {
-    //             childElement.removeAttribute('onclick');
-    //             if (childElement.className.match("^vald .*")) {
-    //                 childElement.removeAttribute('style');
-    //                 childElement.attributes.className = "for-print-vald";
-    //             } else {
-    //                 childElement.removeAttribute('style');
-    //                 childElement.className = "for-print-ejvald";
-    //             }
-    //         }
-    //     }
-    //     if (element.className === 'vald') {
-    //         element.removeAttribute('style');
-    //         element.attributes.className = "for-print-vald";
-    //     } else {
-    //         element.removeAttribute('style');
-    //         element.attributes.className = "for-print-ejvald";
-    //     }
-    // }
-    // printView.appendChild(forPrint);
+        dimNotSelected.setAttribute('class', 'notSelectedDimmer');
+        dimNotSelectedScreen.setAttribute('class', 'notSelectedDimmerScreen');
+        notSelectedText.innerHTML = noanswergivenText;
+        dimNotSelectedScreen.appendChild(notSelectedText);
+        dimNotSelected.appendChild(dimNotSelectedScreen);
+        dimNotSelected.appendChild(cloneOfElement);
+        
+        elementToCopyTo.appendChild(dimNotSelected);
+    } else {
+        elementToCopyTo.appendChild(cloneOfElement);
+    }
 }
 
 function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
@@ -212,7 +240,7 @@ function handleCopyOfQuizOfTextareaType(elementNameToCopyTo) {
     if (textarea[0].value.length > 0) {
         elementToCopyTo[0].innerText = textarea[0].value;
     } else {
-        elementToCopyTo[0].innerText = noanswergivenText;
+        //elementToCopyTo[0].innerText = noanswergivenText;
     }
 
     /* Anpassa styles för utskrift */

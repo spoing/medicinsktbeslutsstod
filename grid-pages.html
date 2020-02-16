@@ -549,20 +549,20 @@
 				<br>
 				<br>
 				<div>
-					<div class="containerslidetext">
-						<div class="grid-topslidetext">
-							<div id="quiz6-tab3" class="containerpages">
-								<div>Mina andra viktiga skäl:<p></p>
-									<textarea id="quiz6a" rows="8" cols="50" name="comment"></textarea></div>
-							</div>
-							<div id="quiz7-tab3" class="containerpages">
-								<div class="alignRight">Mina andra viktiga skäl:<p></p>
-									<textarea id="quiz7a" rows="8" cols=50 name="comment"></textarea>
+					<div id="quiz8-tab3-full">
+						<div class="containerslidetext">
+							<div class="grid-topslidetext">
+								<div id="quiz6-tab3" class="containerpages">
+									<div>Mina andra viktiga skäl:<p></p>
+										<textarea id="quiz6a" rows="8" cols="50" name="comment"></textarea></div>
+								</div>
+								<div id="quiz7-tab3" class="containerpages">
+									<div class="alignRight">Mina andra viktiga skäl:<p></p>
+										<textarea id="quiz7a" rows="8" cols=50 name="comment"></textarea>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div id="quiz8-tab3-full">
 						<div class="containerSlide">
 							<div id="quiz8-tab3" class="grid-containerSlide">
 								<div class="ejvald" name="val3L" style="background-image: url(button-left.png)"
@@ -766,8 +766,8 @@
 				<div id="summaryheader" class="headerp">
 					<h3>Din sammanfattning av det du svarat på.</h3>
 					<p>
-						Här är en lista på dina svar. Du kan använda 
-						den för att tala med din läkare eller nära 
+						Här är en lista på dina svar. Du kan använda
+						den för att tala med din läkare eller nära
 						och kära om ditt beslut.
 					</p>
 				</div>
@@ -777,75 +777,89 @@
 				<div class="accordioncontainer">
 					<button class="accordion" style="margin-bottom: 10px;">Ditt beslut</button>
 					<div class="panel">
-						<h3>Dina nästa steg</h3>
-						<div name="quiz5-tab5" style="margin-bottom: 0.8rem;"></div>
-						<h3>Vart lutar det åt för dig?</h3>
-						<div name="quiz1-tab4-full" style="margin-bottom: 0.8rem;"></div>
-						<h3>Hur säker känner du dig just nu om ditt beslut?</h3>
-						<div name="quiz4-tab5-full" style="margin-bottom: 0.8rem;"></div>
-						<!-- TODO: Om inget är ifyllt i textrutorna skriv inte ej ifylld och kopiera inte rutorna tomma -->
-						<h3>Dina kommentarer</h3>
-						<div name="quiz6-tab5" style="margin-bottom: 0.8rem;"></div>
+						<div class="accordionprintframeinner for-print">
+							<h3>Ditt beslut</h3>
+						</div>
+						<div class="accordionprintcontent">
+							<h3>Dina nästa steg</h3>
+							<div name="quiz5-tab5" style="margin-bottom: 0.8rem;"></div>
+							<h3>Vart lutar det åt för dig?</h3>
+							<div name="quiz1-tab4-full" style="margin-bottom: 0.8rem;"></div>
+							<h3>Hur säker känner du dig just nu om ditt beslut?</h3>
+							<div name="quiz4-tab5-full" style="margin-bottom: 0.8rem;"></div>
+							<h3>Dina kommentarer</h3>
+							<div name="quiz6-tab5" style="margin-bottom: 0.8rem;"></div>
+						</div>
 					</div>
 
 					<button class="accordion" style="margin-bottom: 10px;">Redo att agera</button>
 					<div class="panel">
-						<h3>Patientval</h3>
-						<p hidden>(Detta är svaren från <strong>flik 5</strong>)</p>
-						<div name="quiz1-tab5" style="margin-bottom: 0.8rem;"></div><br>
-						<div name="quiz2-tab5" style="margin-bottom: 0.8rem;"></div><br>
-						<div name="quiz3-tab5" style="margin-bottom: 0.8rem;"></div><br>
+						<div class="accordionprintframeinner for-print">
+							<h3>Redo att agera</h3>
+						</div>
+						<div class="accordionprintcontent">
+							<h3>Patientval</h3>
+							<div name="quiz1-tab5" style="margin-bottom: 0.8rem;"></div><br>
+							<div name="quiz2-tab5" style="margin-bottom: 0.8rem;"></div><br>
+							<div name="quiz3-tab5" style="margin-bottom: 0.8rem;"></div><br>
+						</div>
 					</div>
 
 					<div class="pagebreak"></div>
 
 					<button class="accordion" style="margin-bottom: 10px;">Det som är viktigt för dig</button>
 					<div class="panel"><br>
-						<p hidden>(Här kommer svaren från <strong>flik 3</strong> att synas)</p>
-						<div class="containertoptextSlide">
-							<div class="grid-toptextSlide">
-								<div>
-									<h4>Skäl att sluta ta ditt antidepressiva medel</h4>
-								</div>
-								<div></div>
-								<div></div>
-								<div></div>
-								<div class="alignRight">
-									<h4>Skäl att fortsätta ta det</h4>
+						<div class="accordionprintframeinner for-print">
+							<h3>Det som är viktigt för dig</h3>
+						</div>
+						<div class="accordionprintcontent">
+							<div class="containertoptextSlide">
+								<div class="grid-toptextSlide">
+									<div>
+										<h4>Skäl att sluta ta ditt antidepressiva medel</h4>
+									</div>
+									<div></div>
+									<div></div>
+									<div></div>
+									<div class="alignRight">
+										<h4>Skäl att fortsätta ta det</h4>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<!-- Slide 1 -->
-						<div name="quiz1-tab3-full" style="margin-bottom: 0.8rem;"></div>
+							<!-- Slide 1 -->
+							<div name="quiz1-tab3-full" style="margin-bottom: 0.8rem;"></div>
 
-						<!-- Slide 2 -->
-						<div name="quiz2-tab3-full" style="margin-bottom: 0.8rem;"></div>
+							<!-- Slide 2 -->
+							<div name="quiz2-tab3-full" style="margin-bottom: 0.8rem;"></div>
 
-						<!-- Slide 3 -->
-						<div name="quiz3-tab3-full" style="margin-bottom: 0.8rem;"></div>
+							<!-- Slide 3 -->
+							<div name="quiz3-tab3-full" style="margin-bottom: 0.8rem;"></div>
 
-						<!-- Slide 4 -->
-						<div name="quiz4-tab3-full" style="margin-bottom: 0.8rem;"></div>
+							<!-- Slide 4 -->
+							<div name="quiz4-tab3-full" style="margin-bottom: 0.8rem;"></div>
 
-						<!-- Slide 5 -->
-						<div name="quiz5-tab3-full" style="margin-bottom: 0.8rem;"></div>
+							<!-- Slide 5 -->
+							<div name="quiz5-tab3-full" style="margin-bottom: 0.8rem;"></div>
 
-						<!-- Slide 6 startar här -->
-						<!-- TODO: Om inget är ifyllt i textrutorna skriv inte ej ifylld och kopiera inte rutorna tomma -->
-						<div class="grid-topslidetext">
+							<!-- Slide 6 startar här -->
+							<!-- TODO: Om inget är ifyllt i textrutorna skriv inte ej ifylld och kopiera inte rutorna tomma -->
+
+							<!--<div class="grid-topslidetext">
 							<div class="alignLeft">Mina andra viktiga skäl:<p></p>
 								<div name="quiz6-tab3"></div>
 							</div>
 							<div class="alignRight">Mina andra viktiga skäl:<p></p>
 								<div name="quiz7-tab3"></div>
 							</div>
+						</div> -->
+							<div name="quiz8-tab3-full"></div>
 						</div>
-						<div name="quiz8-tab3-full"></div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- Footer startar här -->
 	<div class="navigation">
@@ -857,7 +871,8 @@
 	</div>
 
 	<div class="footerdisclaimer">
-		<img src="https://www.equalsthlm.se/wp-content/uploads/2019/09/cropped-equal-for-ett-jamlikt-stockholm.png" class="equalsthlmlogo" alt="Equal"/>
+		<img src="https://www.equalsthlm.se/wp-content/uploads/2019/09/cropped-equal-for-ett-jamlikt-stockholm.png"
+			class="equalsthlmlogo" alt="Equal" />
 		Vestibulum luctus, nibh et fringilla viverra, nisi odio lobortis eros, at accumsan
 		nibh augue mollis lectus. Integer bibendum ligula semper condimentum egestas. Quisque eget tincidunt tortor.
 		Etiam efficitur, mi eget efficitur feugiat, urna risus facilisis tellus, non convallis libero metus sed nisl.
